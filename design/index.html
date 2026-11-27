@@ -110,7 +110,7 @@ th { background: var(--wash); }
 
 <section id="marks2">
 <h2>1. The logo mark, round 2: four new directions</h2>
-<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2, I3 and I4 were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2 to I5 were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
 <div class="concepts" id="concepts2"></div>
 </section>
 
@@ -244,6 +244,10 @@ const concepts2 = [
     says: "The UK made of larger coloured squares, all four colours spread evenly across the country, on a near-black tile: every community everywhere, equal partners.",
     unlike: "Square pixels with gaps, like mosaic tiles, a map shape with no centre or symmetry, and a dark square tile rather than a floating badge.",
     weak: "Bigger squares mean a coarser UK; at 16 px it is about 50 squares, so the outline is only roughly British. Equal shares bring back four equal colours, though scattered rather than in quarters. On a dark page the tile's edge disappears." },
+  { id: "i5", name: "Pixel caricature, equal values", full: "i5-pixel-caricature.svg", small: "i5-pixel-caricature-small.svg", dark: "i5-pixel-caricature.svg",
+    says: "A cartoon UK in big squares (jagged Scotland, pinched waist, Wales sticking out, a Cornwall tail, Northern Ireland as its own block), with all four colours at nearly the same lightness, so no community stands out.",
+    unlike: "Square pixels, a hand-drawn caricature with no centre or symmetry, on a dark tile.",
+    weak: "Its colours are lighter pink and blue and a deeper, golden yellow than the agreed palette (L* 63 to 73 instead of 49 to 83). Equal lightness also makes pink and green harder to tell apart for red-green colour blindness (7.1, down from 17.4), which is fine here because no square carries meaning." },
 ];
 function render(list, gridId) {
 const grid = document.getElementById(gridId);
