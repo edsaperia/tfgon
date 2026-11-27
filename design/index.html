@@ -110,7 +110,7 @@ th { background: var(--wash); }
 
 <section id="marks2">
 <h2>1. The logo mark, round 2: four new directions</h2>
-<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, was added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2 and I3 were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
 <div class="concepts" id="concepts2"></div>
 </section>
 
@@ -232,6 +232,14 @@ const concepts2 = [
     says: "The UK built from square pixels, with communities as coloured squares: the network's reach, made of small pieces, and a nod to the tech in tech for good.",
     unlike: "Square, hard-edged pixels instead of rounded shapes. Ink dominates, colour is a few uneven squares (one large pink), and a map has no centre or symmetry.",
     weak: "Pixel art can read as retro gaming rather than serious, and the coloured squares can look like claims about who is where. The squares were placed by a script from a rough outline, so they need hand pixel-pushing." },
+  { id: "i2", name: "Pixel map, coloured regions", full: "i2-pixel-regions.svg", small: "i2-pixel-regions-small.svg", dark: "i2-pixel-regions.svg",
+    says: "The whole country made of coloured pixels, each square taking the colour of its nearest community: the map split into patches, which is also how an application finds its nearest organiser.",
+    unlike: "Square pixels, a map shape with no centre or symmetry, and patches of very different sizes and outlines.",
+    weak: "Four patches imply four fixed territories, which is wrong for a loose network of six or more communities. The pink and blue patches are drawn smaller than the green and yellow ones, but nothing about that is meaningful." },
+  { id: "i3", name: "Pixel map, mosaic", full: "i3-pixel-mosaic.svg", small: "i3-pixel-mosaic-small.svg", dark: "i3-pixel-mosaic.svg",
+    says: "The whole country made of coloured pixels, mixed everywhere: communities all over the UK, side by side, with no borders.",
+    unlike: "Square pixels, a map with no centre or symmetry, and an uneven mix (pink most, yellow least) instead of four equal quarters.",
+    weak: "Busy: at 16 px it reads as a colourful speckled shape more than as the UK, and the random pattern means nothing in particular." },
 ];
 function render(list, gridId) {
 const grid = document.getElementById(gridId);

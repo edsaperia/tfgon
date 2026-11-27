@@ -59,3 +59,39 @@ if __name__ == "__main__":
         (OUT / f"{name}.svg").write_text(txt)
         (OUT / f"{name}-on-dark.svg").write_text(svg(n, LIGHT, "pixel map, for dark backgrounds")[0])
         print(name); print(art)
+
+
+# I2 and I3: every land square is coloured (Ed, 2026-11-27: "the whole country made of the colourful pixels").
+SEATS = [(-3.3, 55.9, GREEN), (-2.3, 53.5, YELLOW), (-3.6, 51.8, PINK), (-0.2, 51.6, BLUE)]
+
+def coloured(n, mode, label):
+    import random
+    g, to_rc = grid(n)
+    cols = len(g[0])
+    used = [c for c in range(cols) if any(g[r][c] for r in range(n))]
+    c0, c1 = min(used), max(used); off = (n - (c1 - c0 + 1)) // 2
+    seats = [(to_rc(lon, lat), col) for lon, lat, col in SEATS]
+    rng = random.Random(7)  # fixed seed: the same mosaic every run
+    palette = [PINK] * 4 + [BLUE] * 3 + [GREEN] * 2 + [YELLOW] * 2  # pink leads, not four equal shares
+    rects, prev_row = [], {}
+    for r in range(n):
+        row = {}
+        for c in range(c0, c1 + 1):
+            if not g[r][c]: continue
+            if mode == "regions":   # nearest community: the map split into each one's patch
+                col = min(seats, key=lambda s: (s[0][0] - r) ** 2 + (s[0][1] - c) ** 2)[1]
+            else:                   # mosaic: random, but never the same as the square to the left or above
+                avoid = {row.get(c - 1), prev_row.get(c)}
+                col = rng.choice([p for p in palette if p not in avoid])
+            row[c] = col
+            rects.append(f'  <rect x="{c - c0 + off}" y="{r}" width="1" height="1" fill="{col}"/>')
+        prev_row = row
+    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {n} {n}" shape-rendering="crispEdges" role="img" aria-label="TFGON mark: {label}">\n' + "\n".join(rects) + "\n</svg>\n"
+
+def write_coloured():
+    for mode, slug in [("regions", "i2-pixel-regions"), ("mosaic", "i3-pixel-mosaic")]:
+        (OUT / f"{slug}.svg").write_text(coloured(24, mode, f"pixel {mode}"))
+        (OUT / f"{slug}-small.svg").write_text(coloured(16, mode, f"pixel {mode}, small"))
+
+if __name__ == "__main__":
+    write_coloured()
