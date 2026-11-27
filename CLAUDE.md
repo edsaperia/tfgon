@@ -20,6 +20,7 @@
 ## The website
 
 - **The existing site** is https://www.techforgoodorganisers.uk/. It was inherited and has not been updated in a long time. Its credentials are lost, but the network controls the domain, so a new site can be put on it. Its assets may be reused, but a redesign is expected (Ed, 2026-11-27). The old site and web.archive.org are both blocked from the coordinator's cloud container, so the coordinator has not seen it yet. Its old *join* form probably went to an inbox nobody monitored (planning doc).
+- **Who the site is for:** **organisers who might join the network** and **funders and partners** (Ed, 2026-11-27). It is not mainly for the general public looking for a local group. So the directory shows who is in the network and where they are, and "reach out" is for prospective members and potential funders or partners to contact organisers.
 - **What the site must have:** a **directory of organisers with a map**, and **a way to reach out** to them. Perhaps more, to be designed (Ed, 2026-11-27).
 
 ## Glossary
