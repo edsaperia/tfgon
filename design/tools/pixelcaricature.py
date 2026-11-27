@@ -38,8 +38,11 @@ SMALL = """
 
 def parse(s): return [list(r) for r in s.strip("\n").split("\n")]
 
-def colour_squares(g, radius, seed):
-    rng = random.Random(seed); pal = list(COLOURS.values()); placed = {}
+# I6: "almost neon" (Ed, 2026-11-27). Brighter and fully saturated; values spread again (L* 57 to 90).
+NEON = {"pink": "#FF2E88", "yellow": "#FFE41F", "green": "#22F2A0", "blue": "#1EBEFF"}
+
+def colour_squares(g, radius, seed, colours=None):
+    rng = random.Random(seed); pal = list((colours or COLOURS).values()); placed = {}
     for r, row in enumerate(g):
         for c, ch in enumerate(row):
             if ch != "#": continue
@@ -50,17 +53,17 @@ def colour_squares(g, radius, seed):
             placed[(r, c)] = min(opts, key=near.count)
     return placed
 
-def svg(g, unit, box, gap, radius, seed, label, tile=True):
+def svg(g, unit, box, gap, radius, seed, label, tile=True, colours=None):
     rows, cols = len(g), max(len(r) for r in g)
     ox, oy = (box - cols * unit) / 2, (box - rows * unit) / 2
-    placed = colour_squares(g, radius, seed)
+    placed = colour_squares(g, radius, seed, colours)
     s = unit - gap
     parts = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {box} {box}" shape-rendering="crispEdges" role="img" aria-label="TFGON mark: {label}">']
     if tile: parts.append(f'  <rect width="{box}" height="{box}" rx="{box * 0.12:g}" fill="{INK}"/>')
     for (r, c), col in placed.items():
         parts.append(f'  <rect x="{ox + c * unit + gap / 2:g}" y="{oy + r * unit + gap / 2:g}" width="{s:g}" height="{s:g}" fill="{col}"/>')
     parts.append("</svg>")
-    counts = {k: list(placed.values()).count(v) for k, v in COLOURS.items()}
+    counts = {k: list(placed.values()).count(v) for k, v in (colours or COLOURS).items()}
     return "\n".join(parts) + "\n", counts
 
 if __name__ == "__main__":
@@ -69,3 +72,7 @@ if __name__ == "__main__":
     (OUT / "i5-pixel-caricature.svg").write_text(full)
     (OUT / "i5-pixel-caricature-small.svg").write_text(small)
     print("counts full", n1, "small", n2)
+    full6, _ = svg(parse(FULL), 1, 16, 0.14, 1, 5, "pixel caricature, neon, on a dark tile", colours=NEON)
+    small6, _ = svg(parse(SMALL), 2, 16, 0, 1, 5, "pixel caricature, neon, on a dark tile, small", colours=NEON)
+    (OUT / "i6-pixel-neon.svg").write_text(full6)
+    (OUT / "i6-pixel-neon-small.svg").write_text(small6)
