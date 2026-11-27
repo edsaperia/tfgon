@@ -110,7 +110,7 @@ th { background: var(--wash); }
 
 <section id="marks2">
 <h2>1. The logo mark, round 2: four new directions</h2>
-<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. Each direction says how. These are directions, not finished marks.</p>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, was added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
 <div class="concepts" id="concepts2"></div>
 </section>
 
@@ -228,6 +228,10 @@ const concepts2 = [
     says: "Communities of different sizes, joined by lines into one loose network, with no hub in charge: it echoes the directory's map without drawing the UK.",
     unlike: "Uneven sizes and positions, one dominant pink, ink lines. Nothing repeats round a centre.",
     weak: "Connected dots are a common 'network' picture (molecules, share icons), so it is distinct from Google but not from everyone." },
+  { id: "i", name: "Pixel map", full: "i-pixel-map.svg", small: "i-pixel-map-small.svg", smallDark: "i-pixel-map-small-on-dark.svg", dark: "i-pixel-map-on-dark.svg",
+    says: "The UK built from square pixels, with communities as coloured squares: the network's reach, made of small pieces, and a nod to the tech in tech for good.",
+    unlike: "Square, hard-edged pixels instead of rounded shapes. Ink dominates, colour is a few uneven squares (one large pink), and a map has no centre or symmetry.",
+    weak: "Pixel art can read as retro gaming rather than serious, and the coloured squares can look like claims about who is where. The squares were placed by a script from a rough outline, so they need hand pixel-pushing." },
 ];
 function render(list, gridId) {
 const grid = document.getElementById(gridId);
