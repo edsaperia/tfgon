@@ -7,6 +7,20 @@
 - **Tests:** none yet. When code arrives, the tests and how to run them are written here, and the dev-ops rules *Tests that tell the truth* and *Done means seen working* apply.
 - **How the project is run:** by the TFGON Coordinator, under the shared rules in `edsaperia/dev-ops` (AGENTS.md, then owner/PROFILE.md, which is Ed; CONVENTIONS.md; claude/QUESTIONS-PAGE.md). TFGON's row is in dev-ops `owner/projects.md`, which records that it is **off the page**: Ed works with the coordinator directly in its session, not through his questions page (Ed, 2026-11-27). It asks him everything there, one decision at a time, multiple choice with the recommended option first, and puts nothing on the page until he says otherwise. Each builder brief carries the coordinator's session link so a finished builder can wake it.
 - **Deferred work:** a register, once there is any (item, why deferred, condition to act, where).
+- **This repository is public.** Members' phone numbers, personal emails and private links (the WhatsApp group, meeting links, the planning doc's contents) are never committed here. What a member chooses to publish about themselves in the directory is a separate decision, still to be made.
+
+## The network (Ed, 2026-11-27)
+
+- **What it is.** Its statement of purpose, agreed by all present at the May 2026 retreat in Newcastle: *"Tech for Good Organisers Network UK brings together people running tech for good communities to share knowledge, strengthen existing networks, and support new ones so the movement can have real, lasting impact."*
+- **Who is in it.** Organisers of UK tech-for-good communities. In 2026–28 six member organisations each hold a £4,500 TFGON grant for local organising: Superhighways (TechSoup Connect England), ThirdSectorLab (Tech for Good Scotland), Newspeak House (London), ProMo Cymru (Tech for Good Cymru), Tech4Good South West CIC, and CAST (Digital Leads Network). North West and North East groups are emerging. The network is deliberately loose and decentralised, with no central staff. Its retro found that over-structuring hurt it, and that regular meetings hold it together better than mission statements do.
+- **Its rhythm.** Four meetings a year: three online quarterlies and one in-person retreat. The 2027 retreat is in Bristol, organised by Annie Legge. The next quarterly is on 3 March 2027.
+- **Why a website now.** At the 25 Nov 2026 quarterly, the most-voted topic was the network's public profile (Annie: *"I often get asked about other groups to connect to outside the South West"*). Notes from that discussion: website, sign-up, the closest member does the onboarding, regular events and an annual retreat, joining mostly by invitation, a newsletter. Ed took the action to put this together.
+- **Background source.** Ed's Google Doc *TFGON 2026 Onwards*: members, the 2026–28 programme, retreat and meeting notes. Not all of it is for the website, but it informs the site's structure.
+
+## The website
+
+- **The existing site** is https://www.techforgoodorganisers.uk/. It was inherited and has not been updated in a long time. Its credentials are lost, but the network controls the domain, so a new site can be put on it. Its assets may be reused, but a redesign is expected (Ed, 2026-11-27). The old site and web.archive.org are both blocked from the coordinator's cloud container, so the coordinator has not seen it yet. Its old *join* form probably went to an inbox nobody monitored (planning doc).
+- **What the site must have:** a **directory of organisers with a map**, and **a way to reach out** to them. Perhaps more, to be designed (Ed, 2026-11-27).
 
 ## Glossary
 
