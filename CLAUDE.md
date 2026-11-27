@@ -25,6 +25,7 @@
 - **Who keeps it up to date:** **Ed, through the coordinator, for now** (Ed, 2026-11-27). Every page, event and directory entry is a plain file in this repository. Members send Ed their changes, and the coordinator makes them. Opening up editing to members later must not need the site rebuilt.
 - **What the site must have:** a **directory of organisers with a map**, and **a way to reach out** to them. Perhaps more, to be designed (Ed, 2026-11-27).
 - **The directory: one entry per community** (Ed, 2026-11-27). Each **community** has its name, region and map pin, a line on what it does, its website and events link, and the **organisers** who run it, named inside the entry. An organiser's photo and contact details appear only with that person's consent. When an organiser moves on, their name changes and the community stays on the map.
+- **Reaching out** (Ed, 2026-11-27). Organisers' email addresses in the directory are public, each with that organiser's consent, so anyone can contact a community directly. **Applications** to join take a separate route. The applicant fills in a short form: their name, and links to tech-for-good events they have organised, plus whatever is needed to find their nearest organiser and reply to them. The network looks at the events, forwards the application to the nearest organiser or organisers, and adds it to the agenda of the next meeting. The network already has an email address for each organiser. A static site cannot receive a form, so where submissions land is a separate decision (see below).
 
 ## Glossary
 
@@ -36,3 +37,4 @@ Names for the parts of TFGON, literal and stable, added as they are decided.
 - **Community**: one tech-for-good group in the network (for example Tech for Good Scotland), shown as one entry and one pin in the directory.
 - **Organiser**: a person who runs a community, named within that community's entry.
 - **Directory**: the site's list of communities, together with its map.
+- **Application**: a would-be member organiser's request to join, made through the site's application form. It is reviewed, forwarded to the nearest organiser, and added to the next meeting's agenda.
