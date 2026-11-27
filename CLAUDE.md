@@ -24,9 +24,15 @@
 - **Who the site is for:** **organisers who might join the network** and **funders and partners** (Ed, 2026-11-27). It is not mainly for the general public looking for a local group. So the directory shows who is in the network and where they are, and "reach out" is for prospective members and potential funders or partners to contact organisers.
 - **Who keeps it up to date:** **Ed, through the coordinator, for now** (Ed, 2026-11-27). Every page, event and directory entry is a plain file in this repository. Members send Ed their changes, and the coordinator makes them. Opening up editing to members later must not need the site rebuilt.
 - **What the site must have:** a **directory of organisers with a map**, and **a way to reach out** to them. Perhaps more, to be designed (Ed, 2026-11-27).
+- **The directory: one entry per community** (Ed, 2026-11-27). Each **community** has its name, region and map pin, a line on what it does, its website and events link, and the **organisers** who run it, named inside the entry. An organiser's photo and contact details appear only with that person's consent. When an organiser moves on, their name changes and the community stays on the map.
+
+## Glossary
 
 ## Glossary
 
 Names for the parts of TFGON, literal and stable, added as they are decided.
 
 - **TFGON**: the Tech for Good Organisers Network.
+- **Community**: one tech-for-good group in the network (for example Tech for Good Scotland), shown as one entry and one pin in the directory.
+- **Organiser**: a person who runs a community, named within that community's entry.
+- **Directory**: the site's list of communities, together with its map.
