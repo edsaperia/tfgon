@@ -12,6 +12,9 @@
   - *Funders and partners contact line, and the join form's fallback address:* the wording and address are Ed's. Condition: Ed gives them. This must be done before the first deploy.
   - *Which old communities are past:* some may be dormant rather than gone (Tech for Good London; Social Tech North East, whose organiser is in the emerging North East group). Condition: Ed confirms the list. This must be done before the first deploy.
   - *Who reviews applications:* undecided. Condition: the application route (the second build) is ready to brief.
+- **Work in flight** (started 2026-11-27, 18:55, on Ed's word, question 30 a):
+  - *Site, first version:* brief `briefs/site-v1.md`. Builder session `session_018uvzSPXs8WtpRYMQVKDZ9e`. Works in `/docs`. Its PR is a draft marked "do not merge".
+  - *Logo, colours and typeface drafts:* brief `briefs/design-v1.md`. Builder session `session_018uvzSPoLJKUx3o3mPuMkSG`. Works in `/design`. Ed chooses from the drafts, then a follow-up swaps them into the site.
 - **This repository is public.** Members' phone numbers, personal emails and private links (the WhatsApp group, meeting links, the planning doc's contents) are never committed here. What a member chooses to publish about themselves in the directory is a separate decision, still to be made.
 
 ## The network (Ed, 2026-11-27)
