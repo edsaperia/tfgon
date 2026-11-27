@@ -1,0 +1,51 @@
+{
+  "_about": "The network's own meetings (TFGON events). One entry per meeting. The page sorts them: upcoming first (soonest first), then past (latest first). An event is upcoming until the day after its last day. Leave 'start' empty when the dates are not yet known. Never put a meeting link here: this file is public.",
+  "events": [
+    {
+      "title": "Online quarterly meeting",
+      "format": "Online",
+      "start": "2027-03-03",
+      "end": "",
+      "time": "12:00–13:00",
+      "place": "",
+      "note": ""
+    },
+    {
+      "title": "National retreat 2027",
+      "format": "In person",
+      "start": "",
+      "end": "",
+      "year": "2027",
+      "time": "",
+      "place": "Bristol",
+      "note": "Dates to be confirmed."
+    },
+    {
+      "title": "Online quarterly meeting",
+      "format": "Online",
+      "start": "2026-11-25",
+      "end": "",
+      "time": "",
+      "place": "",
+      "note": ""
+    },
+    {
+      "title": "Online quarterly meeting",
+      "format": "Online",
+      "start": "2026-09-02",
+      "end": "",
+      "time": "",
+      "place": "",
+      "note": ""
+    },
+    {
+      "title": "National retreat",
+      "format": "In person",
+      "start": "2026-05-18",
+      "end": "2026-05-19",
+      "time": "",
+      "place": "Newcastle",
+      "note": "Where the network agreed its statement of purpose."
+    }
+  ]
+}
