@@ -14,7 +14,7 @@
   --green: #06D6A0;
   --blue: #118AB2;
 
-  /* Words and links. --ink on --paper is 15.6:1; --ink-soft on --paper-tint is 7.4:1. */
+  /* Words and links. --ink on --paper is 15.8:1; --ink-soft on --paper-tint is 7.3:1 (WCAG AA needs 4.5:1). */
   --ink: #1E232B;
   --ink-soft: #485060;
   --paper: #FFFFFF;
