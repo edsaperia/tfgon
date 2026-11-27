@@ -48,7 +48,7 @@
     var body = document.getElementById(toggle.getAttribute('aria-controls'));
     toggle.setAttribute('aria-expanded', String(open));
     if (open) body.removeAttribute('hidden');
-    else body.setAttribute('hidden', 'until-found'); // find-in-page can still reach it
+    else body.setAttribute('hidden', '');
     var entry = toggle.closest('.community');
     if (entry) {
       entry.classList.toggle('is-open', open);
@@ -63,7 +63,6 @@
     toggle.addEventListener('click', function () {
       setOpen(toggle, toggle.getAttribute('aria-expanded') !== 'true');
     });
-    body.addEventListener('beforematch', function () { setOpen(toggle, true); });
   }
 
   // Open every fold that contains the element with this id, then show it.
@@ -102,8 +101,11 @@
 
   // --- Events --------------------------------------------------------------
 
-  var dayFormat = new Intl.DateTimeFormat('en-GB', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
-  var dayMonthFormat = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'long', timeZone: 'UTC' });
+  var DAYS = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  // British style, with no commas: "Wednesday 3 March 2027".
+  var dayFormat = { format: function (d) { return DAYS[d.getUTCDay()] + ' ' + d.getUTCDate() + ' ' + MONTHS[d.getUTCMonth()] + ' ' + d.getUTCFullYear(); } };
+  var dayMonthFormat = { format: function (d) { return d.getUTCDate() + ' ' + MONTHS[d.getUTCMonth()]; } };
 
   function parseDay(iso) { return new Date(iso + 'T00:00:00Z'); }
 
