@@ -95,3 +95,40 @@ def write_coloured():
 
 if __name__ == "__main__":
     write_coloured()
+
+
+# I4: the mosaic with larger squares, colours spread evenly, on a dark tile (Ed, 2026-11-27).
+def even_mosaic(rows, box, label, gap=0.0, radius=2, seed=3):
+    """Map on `rows` squares, centred in a `box` x `box` dark tile.
+    Each square takes the colour least used among squares already placed within `radius`
+    (ties broken by a fixed-seed shuffle), so all four colours spread evenly, in equal shares,
+    and no two touching squares match."""
+    import random
+    rng = random.Random(seed)
+    g, _ = grid(rows)
+    cols = len(g[0])
+    used = [c for c in range(cols) if any(g[r][c] for r in range(rows))]
+    c0, c1 = min(used), max(used)
+    ox = (box - (c1 - c0 + 1)) / 2; oy = (box - rows) / 2
+    placed = {}
+    pal = [PINK, YELLOW, GREEN, BLUE]
+    for r in range(rows):
+        for c in range(c0, c1 + 1):
+            if not g[r][c]: continue
+            near = [placed[(rr, cc)] for (rr, cc) in placed if abs(rr - r) <= radius and abs(cc - c) <= radius]
+            touching = {placed.get((r, c - 1)), placed.get((r - 1, c)), placed.get((r - 1, c - 1)), placed.get((r - 1, c + 1))}
+            opts = [p for p in pal if p not in touching] or pal
+            rng.shuffle(opts)
+            placed[(r, c)] = min(opts, key=lambda p: near.count(p))
+    s = 1 - gap
+    rects = [f'  <rect x="{c - c0 + ox + gap/2:g}" y="{r + oy + gap/2:g}" width="{s:g}" height="{s:g}" fill="{col}"/>' for (r, c), col in placed.items()]
+    tile = f'  <rect width="{box}" height="{box}" rx="{box * 0.12:g}" fill="{INK}"/>'
+    counts = {p: list(placed.values()).count(p) for p in pal}
+    return (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {box} {box}" shape-rendering="crispEdges" role="img" aria-label="TFGON mark: {label}">\n{tile}\n' + "\n".join(rects) + "\n</svg>\n", counts)
+
+if __name__ == "__main__":
+    full, n1 = even_mosaic(16, 19, "even pixel mosaic on a dark tile", gap=0.12)
+    small, n2 = even_mosaic(14, 16, "even pixel mosaic on a dark tile, small")
+    (OUT / "i4-pixel-mosaic-tile.svg").write_text(full)
+    (OUT / "i4-pixel-mosaic-tile-small.svg").write_text(small)
+    print("I4 colour counts, full:", n1, "small:", n2)

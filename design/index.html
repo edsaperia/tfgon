@@ -110,7 +110,7 @@ th { background: var(--wash); }
 
 <section id="marks2">
 <h2>1. The logo mark, round 2: four new directions</h2>
-<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2 and I3 were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2, I3 and I4 were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
 <div class="concepts" id="concepts2"></div>
 </section>
 
@@ -240,6 +240,10 @@ const concepts2 = [
     says: "The whole country made of coloured pixels, mixed everywhere: communities all over the UK, side by side, with no borders.",
     unlike: "Square pixels, a map with no centre or symmetry, and an uneven mix (pink most, yellow least) instead of four equal quarters.",
     weak: "Busy: at 16 px it reads as a colourful speckled shape more than as the UK, and the random pattern means nothing in particular." },
+  { id: "i4", name: "Pixel mosaic on a dark tile", full: "i4-pixel-mosaic-tile.svg", small: "i4-pixel-mosaic-tile-small.svg", dark: "i4-pixel-mosaic-tile.svg",
+    says: "The UK made of larger coloured squares, all four colours spread evenly across the country, on a near-black tile: every community everywhere, equal partners.",
+    unlike: "Square pixels with gaps, like mosaic tiles, a map shape with no centre or symmetry, and a dark square tile rather than a floating badge.",
+    weak: "Bigger squares mean a coarser UK; at 16 px it is about 50 squares, so the outline is only roughly British. Equal shares bring back four equal colours, though scattered rather than in quarters. On a dark page the tile's edge disappears." },
 ];
 function render(list, gridId) {
 const grid = document.getElementById(gridId);
