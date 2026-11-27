@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="TFGON mark: constellation, small">
+  <line x1="30" y1="34" x2="76" y2="26" stroke="#1E2A36" stroke-width="8" stroke-linecap="round"/>
+  <line x1="30" y1="34" x2="70" y2="76" stroke="#1E2A36" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="30" cy="34" r="22" fill="#D33A63"/>
+  <circle cx="76" cy="26" r="13" fill="#FFC845"/>
+  <circle cx="70" cy="76" r="16" fill="#2B7FC2"/>
+</svg>

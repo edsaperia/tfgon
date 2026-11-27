@@ -105,11 +105,17 @@ th { background: var(--wash); }
 <main>
 
 <h1>TFGON logo, colours and typeface: drafts</h1>
-<p class="lede">Four logo-mark concepts, one retuned palette and two typefaces, for Ed to choose from. Each concept is shown in the retuned colours, at full size, with the network's name in both typefaces, at header and browser-tab sizes, and on a dark background. Nothing on this page is loaded from outside, and none of it is on the live site.</p>
+<p class="lede">Logo-mark directions (round 2 first, round 1 below it for comparison), one retuned palette and two typefaces, for Ed to choose from. Each concept is shown in the retuned colours, at full size, with the network's name in both typefaces, at header and browser-tab sizes, and on a dark background. Nothing on this page is loaded from outside, and none of it is on the live site.</p>
 <p class="note">Files: marks in <code>design/marks/</code>, fonts in <code>design/fonts/</code>, checks in <code>design/tools/</code>. Brief: <code>briefs/design-v1.md</code>.</p>
 
+<section id="marks2">
+<h2>1. The logo mark, round 2: four new directions</h2>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. Each direction says how. These are directions, not finished marks.</p>
+<div class="concepts" id="concepts2"></div>
+</section>
+
 <section id="marks">
-<h2>1. The logo mark: four concepts</h2>
+<h2>1a. Round 1, kept for comparison</h2>
 <p class="lede">All four start from the old idea, several communities coming together, without tracing the old drawing. The tab icons in the "16 px, real pixels" row are drawn at true size and then magnified, so you see exactly what a browser tab would show.</p>
 <div class="concepts" id="concepts"></div>
 </section>
@@ -205,8 +211,27 @@ const concepts = [
 ];
 const el = (h) => { const t = document.createElement("template"); t.innerHTML = h.trim(); return t.content.firstChild; };
 const lock = (f, img) => `<div class="lockup f-${f}"><img src="marks/${img}" alt=""><div class="name"><b>Tech for Good</b>Organisers Network</div></div>`;
-const grid = document.getElementById("concepts");
-for (const c of concepts) {
+const concepts2 = [
+  { id: "e", name: "Crossing strokes", full: "e-crossing-strokes.svg", small: "e-crossing-strokes-small.svg", dark: "e-crossing-strokes.svg",
+    says: "Four strokes of different lengths cross, and where two communities meet a new colour appears: coming together, shown literally, and the old overlapping strokes reborn.",
+    unlike: "Unequal: pink leads and green is a small accent. The strokes blend where they cross instead of sitting side by side as flat colour, and the mark has no centre and no rotational symmetry.",
+    weak: "The blended tones (deep purple, red-orange, dark olive) add colours outside the palette, and where pink crosses blue or green it goes very dark." },
+  { id: "f", name: "Converging threads", full: "f-threads.svg", small: "f-threads-small.svg", dark: "f-threads.svg",
+    says: "Four threads start in different places and run together into one cable: separate communities, one network, still each its own colour.",
+    unlike: "Drawn in line, not filled shapes. It reads left to right, as a journey, with no centre and no symmetry.",
+    weak: "Thin lines vanish at 16 px, so the tab icon needs its own thicker drawing. It could also be read as cables, a data flow or a transport map." },
+  { id: "g", name: "tfg letters", full: "g-letters.svg", small: "g-letters-small.svg", smallDark: "g-letters-small-on-dark.svg", dark: "g-letters-on-dark.svg",
+    says: "The letters t, f and g share one crossbar, made of the four colours: the link that runs through every community.",
+    unlike: "A letter mark, mostly ink, with colour as one thin band of unequal lengths. No geometric badge and no symmetry.",
+    weak: "Says \"tfg\", not TFGON, and the letters are drawn quickly here; a letter mark needs the most hand-tuning of the four before it looks right." },
+  { id: "h", name: "Constellation", full: "h-constellation.svg", small: "h-constellation-small.svg", smallDark: "h-constellation-small-on-dark.svg", dark: "h-constellation-on-dark.svg",
+    says: "Communities of different sizes, joined by lines into one loose network, with no hub in charge: it echoes the directory's map without drawing the UK.",
+    unlike: "Uneven sizes and positions, one dominant pink, ink lines. Nothing repeats round a centre.",
+    weak: "Connected dots are a common 'network' picture (molecules, share icons), so it is distinct from Google but not from everyone." },
+];
+function render(list, gridId) {
+const grid = document.getElementById(gridId);
+for (const c of list) {
   grid.appendChild(el(`<div class="card">
     <h3><span class="letter">${c.id.toUpperCase()}</span>${c.name}</h3>
     <div><div class="row-label">Full size</div><div class="big"><img src="marks/${c.full}" alt="Concept ${c.id.toUpperCase()}"></div></div>
@@ -220,11 +245,15 @@ for (const c of concepts) {
       <figure><canvas data-src="marks/${c.full}" data-px="32" width="32" height="32" style="width:64px;height:64px"></canvas>full, 32</figure>
     </div></div>
     <div><div class="row-label">On dark</div><div class="dark"><img src="marks/${c.dark}" alt=""><div class="name"><b>Tech for Good</b>Organisers Network</div>
-      <div class="tiny"><img class="s16" src="marks/${c.small}" alt="" title="16 px"></div></div></div>
+      <div class="tiny"><img class="s16" src="marks/${c.smallDark || c.small}" alt="" title="16 px"></div></div></div>
     <div class="says"><strong>What it says</strong>${c.says}</div>
+    ${c.unlike ? `<div class="says"><strong>What makes it unlike a Google logo</strong>${c.unlike}</div>` : ""}
     <div class="weak"><strong>Main weakness</strong>${c.weak}</div>
   </div>`));
 }
+}
+render(concepts2, "concepts2");
+render(concepts, "concepts");
 // Draw each icon at true pixel size, then let CSS magnify it without smoothing.
 for (const cv of document.querySelectorAll("canvas[data-src]")) {
   const img = new Image(); const px = +cv.dataset.px;
