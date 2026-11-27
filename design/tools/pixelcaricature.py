@@ -38,6 +38,27 @@ SMALL = """
 
 def parse(s): return [list(r) for r in s.strip("\n").split("\n")]
 
+# I6's own shape (Ed, 2026-11-27: "simpler and more angular"): straight runs and clean diagonal steps.
+FULL6 = """
+..###....
+..###....
+...##....
+...###...
+#...###..
+#...####.
+...#####.
+..######.
+.##......
+"""
+SMALL6 = """
+..##....
+..##....
+...##...
+#..###..
+#..####.
+..##....
+"""
+
 # I6: "almost neon" (Ed, 2026-11-27). Brighter and fully saturated; values spread again (L* 57 to 90).
 NEON = {"pink": "#FF2E88", "yellow": "#FFE41F", "green": "#22F2A0", "blue": "#1EBEFF"}
 
@@ -72,7 +93,7 @@ if __name__ == "__main__":
     (OUT / "i5-pixel-caricature.svg").write_text(full)
     (OUT / "i5-pixel-caricature-small.svg").write_text(small)
     print("counts full", n1, "small", n2)
-    full6, _ = svg(parse(FULL), 1, 16, 0.14, 1, 5, "pixel caricature, neon, on a dark tile", colours=NEON)
-    small6, _ = svg(parse(SMALL), 2, 16, 0, 1, 5, "pixel caricature, neon, on a dark tile, small", colours=NEON)
+    full6, _ = svg(parse(FULL6), 1, 11, 0.14, 1, 5, "pixel caricature, neon, on a dark tile", colours=NEON)
+    small6, _ = svg(parse(SMALL6), 2, 16, 0, 1, 5, "pixel caricature, neon, on a dark tile, small", colours=NEON)
     (OUT / "i6-pixel-neon.svg").write_text(full6)
     (OUT / "i6-pixel-neon-small.svg").write_text(small6)
