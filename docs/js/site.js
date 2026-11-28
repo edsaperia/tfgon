@@ -5,7 +5,6 @@
   'use strict';
 
   var config = window.TFGON_CONFIG || {};
-  var PIN_COLOURS = ['var(--pink)', 'var(--yellow)', 'var(--green)', 'var(--blue)'];
   var OPEN_AT_START = ['intro-body'];
 
   // --- Small helpers -------------------------------------------------------
@@ -55,6 +54,7 @@
       var pin = document.querySelector('.pin[aria-controls="' + body.id + '"]');
       if (pin) pin.setAttribute('aria-expanded', String(open));
     }
+    scheduleLeaderLines();
   }
 
   function setUpFold(toggle) {
@@ -189,7 +189,7 @@
     return el('li', {}, parts);
   }
 
-  function entryFor(community, colour) {
+  function entryFor(community) {
     var bodyId = 'community-' + community.id + '-body';
     var emerging = community.status === 'emerging';
     var toggle = el('button', { type: 'button', className: 'fold-toggle', 'aria-expanded': 'false', 'aria-controls': bodyId }, [
@@ -216,11 +216,10 @@
         dl
       ])
     ]);
-    item.style.setProperty('--pin', colour);
     return item;
   }
 
-  function pinFor(community, colour, svg) {
+  function pinFor(community, svg) {
     var emerging = community.status === 'emerging';
     var pin = el('button', {
       type: 'button',
@@ -231,15 +230,11 @@
       'aria-label': community.name + (emerging ? ' (emerging)' : '') + ', ' + community.region,
       title: community.name
     });
-    pin.style.setProperty('--pin', colour);
     if (!community.pin.online) {
+      // The pin's x and y are in the mark's own grid; the map shows part of it.
       var box = svg.viewBox.baseVal;
-      var west = Number(svg.dataset.west), north = Number(svg.dataset.north);
-      var scale = Number(svg.dataset.scale), lat0 = Number(svg.dataset.lat0);
-      var x = (community.pin.lon - west) * Math.cos(lat0 * Math.PI / 180) * scale;
-      var y = (north - community.pin.lat) * scale;
-      pin.style.left = (x / box.width * 100) + '%';
-      pin.style.top = (y / box.height * 100) + '%';
+      pin.style.left = ((community.pin.x - box.x) / box.width * 100) + '%';
+      pin.style.top = ((community.pin.y - box.y) / box.height * 100) + '%';
     }
     pin.addEventListener('click', function () {
       var entry = document.getElementById('community-' + community.id);
@@ -267,7 +262,11 @@
     var members = onMap.filter(function (c) { return c.status === 'member'; });
     var emerging = onMap.filter(function (c) { return c.status === 'emerging'; });
     var past = communities.filter(function (c) { return c.status === 'past'; });
-    var ordered = members.concat(emerging);
+    // North to south, by where each circle sits, so the leader lines cross as
+    // little as possible. Online communities sit where their box is drawn.
+    var ONLINE_BOX_Y = 4.4;
+    var mapY = function (c) { return c.pin.online ? ONLINE_BOX_Y : c.pin.y; };
+    var ordered = onMap.slice().sort(function (a, b) { return mapY(a) - mapY(b); });
 
     var svg = document.querySelector('#map .map-drawing');
     var list = document.getElementById('community-list');
@@ -275,10 +274,9 @@
     var onlinePins = document.getElementById('map-online-pins');
 
     var entries = [];
-    ordered.forEach(function (community, i) {
-      var colour = PIN_COLOURS[i % PIN_COLOURS.length];
-      entries.push(entryFor(community, colour));
-      (community.pin.online ? onlinePins : pins).appendChild(pinFor(community, colour, svg));
+    ordered.forEach(function (community) {
+      entries.push(entryFor(community));
+      (community.pin.online ? onlinePins : pins).appendChild(pinFor(community, svg));
     });
     list.replaceChildren.apply(list, entries);
     document.getElementById('map-online').hidden = !onlinePins.children.length;
@@ -289,6 +287,64 @@
     document.querySelector('.past').hidden = !past.length;
 
     renderGlance(members, emerging);
+    setUpLeaderLines();
+  }
+
+  // --- Leader lines: desktop only ------------------------------------------
+  // A line from each circle on the map to the left edge of its entry in the
+  // list. Redrawn whenever anything that moves the circles or entries changes:
+  // folding, resizing, fonts loading.
+
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var desktop = window.matchMedia('(min-width: 52rem)');
+  var linesFrame = 0;
+
+  function scheduleLeaderLines() {
+    if (linesFrame) return;
+    linesFrame = requestAnimationFrame(function () { linesFrame = 0; drawLeaderLines(); });
+  }
+
+  function drawLeaderLines() {
+    var layer = document.getElementById('leader-lines');
+    if (!layer) return;
+    var layout = layer.parentElement;
+    if (!desktop.matches || layout.offsetParent === null) { layer.replaceChildren(); return; }
+    var origin = layout.getBoundingClientRect();
+    layer.setAttribute('viewBox', '0 0 ' + origin.width + ' ' + origin.height);
+    var shapes = [];
+    document.querySelectorAll('#map .pin').forEach(function (pin) {
+      var id = pin.getAttribute('data-community');
+      var entry = document.getElementById('community-' + id);
+      if (!entry) return;
+      var p = pin.getBoundingClientRect();
+      var h = entry.querySelector('.fold-toggle').getBoundingClientRect();
+      var x1 = p.left + p.width / 2 - origin.left, y1 = p.top + p.height / 2 - origin.top;
+      var x2 = h.left - origin.left, y2 = h.top + h.height / 2 - origin.top;
+      var open = entry.classList.contains('is-open');
+      var line = document.createElementNS(SVG_NS, 'line');
+      [['x1', x1], ['y1', y1], ['x2', x2], ['y2', y2], ['data-community', id]].forEach(function (a) { line.setAttribute(a[0], a[1]); });
+      if (open) line.setAttribute('class', 'is-open');
+      var dot = document.createElementNS(SVG_NS, 'circle');
+      [['cx', x2], ['cy', y2], ['r', 3]].forEach(function (a) { dot.setAttribute(a[0], a[1]); });
+      if (open) dot.setAttribute('class', 'is-open');
+      shapes.push(line, dot);
+    });
+    layer.replaceChildren.apply(layer, shapes);
+  }
+
+  function setUpLeaderLines() {
+    var layer = document.getElementById('leader-lines');
+    if (!layer) return;
+    if (window.ResizeObserver) {
+      var watcher = new ResizeObserver(scheduleLeaderLines);
+      watcher.observe(layer.parentElement);
+      watcher.observe(document.getElementById('community-list'));
+      watcher.observe(document.getElementById('map'));
+    }
+    window.addEventListener('resize', scheduleLeaderLines);
+    if (desktop.addEventListener) desktop.addEventListener('change', scheduleLeaderLines);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(scheduleLeaderLines);
+    scheduleLeaderLines();
   }
 
   // --- Application form ----------------------------------------------------

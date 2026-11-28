@@ -3,7 +3,6 @@ const AxeBuilder = require('@axe-core/playwright').default;
 const { openPage } = require('./helpers');
 
 // Written by hand from Ed's confirmed design (CLAUDE.md, Old-site assets).
-const INK = 'rgb(30, 42, 54)'; // #1E2A36
 const ICONS = [
   { rel: 'icon', type: 'image/svg+xml', size: null },
   { rel: 'icon', type: 'image/png', size: 16 },
@@ -68,25 +67,9 @@ test('each browser-tab icon the page links to exists and loads', async ({ page, 
   }
 });
 
-test('the header and the events section are dark ink bands', async ({ page }) => {
-  await page.emulateMedia({ reducedMotion: 'reduce' }); // jump to #events rather than glide
-  await openPage(page, '/#events');
-  await page.locator('#events').scrollIntoViewIfNeeded();
-  for (const selector of ['.site-header', '#events']) {
-    const bg = await page.locator(selector).evaluate((n) => getComputedStyle(n).backgroundColor);
-    expect(bg, selector).toBe(INK);
-  }
-  // The band reaches both edges of the window.
-  const width = page.viewportSize().width;
-  const box = await page.locator('#events').evaluate((n) => {
-    const shown = document.elementFromPoint(2, n.getBoundingClientRect().top + 10);
-    const right = document.elementFromPoint(window.innerWidth - 3, n.getBoundingClientRect().top + 10);
-    return [getComputedStyle(shown.closest('#events') || shown).backgroundColor, getComputedStyle(right.closest('#events') || right).backgroundColor];
-  });
-  expect(box, `edges at width ${width}`).toEqual([INK, INK]);
-  // and it never makes the page scroll sideways
-  expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBeLessThanOrEqual(width);
-});
+// The test that the header and events section were dark bands is replaced by
+// "the page background is dark throughout" in second-pass.spec.js (Ed's second
+// design pass made the whole page dark).
 
 test('the mark is in the header beside the name, and the placeholder is gone', async ({ page }) => {
   await openPage(page);

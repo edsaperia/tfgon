@@ -5,14 +5,12 @@
   "scripts": {
     "test": "playwright test",
     "serve": "http-server docs -p 8080 -c-1 --silent",
-    "build:map": "node scripts/build-map.mjs",
+    "build:map": "node scripts/build-logo-map.mjs",
     "build:icons": "node scripts/build-icons.mjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.14.1",
     "@playwright/test": "1.63.0",
-    "http-server": "14.1.1",
-    "topojson-client": "3.1.0",
-    "world-atlas": "2.0.2"
+    "http-server": "14.1.1"
   }
 }

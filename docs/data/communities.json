@@ -1,5 +1,5 @@
 {
-  "_about": "The directory: one entry per community. 'status' is 'member', 'emerging' or 'past'. Members and emerging groups get a pin on the map; past communities are listed at the foot of the directory and get no pin, so moving one back is a one-word change to 'status'. 'pin' is where the pin goes ('lat' and 'lon'), or 'online': true for a community that meets online or across the UK. An organiser's 'email' and 'photo' stay empty unless that organiser has agreed to publish them. Never put a phone number or a personal email address here: this file is public.",
+  "_about": "The directory: one entry per community. 'status' is 'member', 'emerging' or 'past'. Members and emerging groups get a circle on the map; past communities are listed at the foot of the directory and get no circle, so moving one back is a one-word change to 'status'. 'pin' is where its circle goes on the directory map, which is the network's mark drawn large: 'x' and 'y' are in the mark's own grid (0 to 10 across and down, as in docs/img/mark.svg), placed by eye on the stylised shape. Use 'online': true instead for a community that meets online or across the UK. An organiser's 'email' and 'photo' stay empty unless that organiser has agreed to publish them. Never put a phone number or a personal email address here: this file is public.",
   "communities": [
     {
       "id": "tech-for-good-scotland",
@@ -10,7 +10,7 @@
       "about": "Brings together people across Scotland who use technology for social good.",
       "website": "https://thirdsectorlab.co.uk/techforgood/",
       "events": "",
-      "pin": { "lat": 55.86, "lon": -4.25 },
+      "pin": { "x": 4.45, "y": 3.75 },
       "organisers": [
         { "name": "Ross McCulloch", "email": "", "photo": "" }
       ]
@@ -24,7 +24,7 @@
       "about": "Brings together people across Wales who use technology for social good.",
       "website": "https://www.promo.cymru",
       "events": "",
-      "pin": { "lat": 51.48, "lon": -3.18 },
+      "pin": { "x": 4.3, "y": 7.35 },
       "organisers": [
         { "name": "Arielle Tye", "email": "", "photo": "" }
       ]
@@ -38,7 +38,7 @@
       "about": "Runs events and a community for people in the South West of England who use technology for good.",
       "website": "https://www.tech4goodsouthwest.org",
       "events": "https://luma.com/tech4goodsouthwest",
-      "pin": { "lat": 51.45, "lon": -2.59 },
+      "pin": { "x": 5.05, "y": 7.65 },
       "organisers": [
         { "name": "Annie Legge", "email": "", "photo": "" },
         { "name": "Ed Howarth", "email": "", "photo": "" }
@@ -53,7 +53,7 @@
       "about": "A college and community space in London for technologists working on civic and social questions.",
       "website": "https://newspeak.house",
       "events": "https://newspeak.house/events",
-      "pin": { "lat": 51.52, "lon": -0.07 },
+      "pin": { "x": 7.3, "y": 7.85 },
       "organisers": [
         { "name": "Edward Saperia", "email": "", "photo": "" }
       ]
@@ -96,7 +96,7 @@
       "about": "A new tech-for-good group starting in Manchester.",
       "website": "",
       "events": "",
-      "pin": { "lat": 53.48, "lon": -2.24 },
+      "pin": { "x": 5.4, "y": 6.05 },
       "organisers": []
     },
     {
@@ -108,7 +108,7 @@
       "about": "A new tech-for-good group starting in Newcastle.",
       "website": "",
       "events": "",
-      "pin": { "lat": 54.97, "lon": -1.61 },
+      "pin": { "x": 6.0, "y": 4.95 },
       "organisers": []
     },
     {
@@ -121,7 +121,7 @@
       "about": "A meetup that brought coders and designers together with people who understood a social problem, to build digital answers to social and environmental challenges.",
       "website": "",
       "events": "",
-      "pin": { "lat": 51.51, "lon": -0.13 },
+      "pin": { "x": 7.3, "y": 7.85 },
       "organisers": [
         { "name": "Dama Sathianathan", "email": "", "photo": "" }
       ]
@@ -136,7 +136,7 @@
       "about": "Championed the ethical use of technology through events, volunteer matching, advice to councils and a podcast.",
       "website": "",
       "events": "",
-      "pin": { "lat": 53.48, "lon": -2.24 },
+      "pin": { "x": 5.4, "y": 6.05 },
       "organisers": [
         { "name": "Rebecca Rae-Evans", "email": "", "photo": "" }
       ]
@@ -151,7 +151,7 @@
       "about": "",
       "website": "",
       "events": "",
-      "pin": { "lat": 51.75, "lon": -1.26 },
+      "pin": { "x": 6.5, "y": 7.4 },
       "organisers": [
         { "name": "Chris Ashworth", "email": "", "photo": "" }
       ]
@@ -166,7 +166,7 @@
       "about": "Helped people working in digital in Scotland contribute to the biggest problems facing people and the planet.",
       "website": "",
       "events": "",
-      "pin": { "lat": 55.95, "lon": -3.19 },
+      "pin": { "x": 5.2, "y": 3.7 },
       "organisers": [
         { "name": "Barry O'Kane", "email": "", "photo": "" }
       ]
@@ -181,7 +181,7 @@
       "about": "",
       "website": "",
       "events": "",
-      "pin": { "lat": 50.72, "lon": -3.53 },
+      "pin": { "x": 4.1, "y": 8.45 },
       "organisers": [
         { "name": "Micheal McAndrew", "email": "", "photo": "" }
       ]
@@ -196,7 +196,7 @@
       "about": "",
       "website": "",
       "events": "",
-      "pin": { "lat": 54.97, "lon": -1.61 },
+      "pin": { "x": 6.0, "y": 4.95 },
       "organisers": [
         { "name": "David Van der Velde", "email": "", "photo": "" }
       ]
@@ -211,7 +211,7 @@
       "about": "",
       "website": "",
       "events": "",
-      "pin": { "lat": 52.48, "lon": -1.9 },
+      "pin": { "x": 5.9, "y": 6.8 },
       "organisers": [
         { "name": "Pauline Roche", "email": "", "photo": "" }
       ]
