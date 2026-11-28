@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="TFGON mark: map pin, for dark backgrounds">
+  <path d="M50 96 C38 80 18 64 18 40 A32 32 0 1 1 82 40 C82 64 62 80 50 96 Z" fill="#F4F6F8"/>
+  <path d="M52.19 22.13 A18 18 0 0 1 67.87 37.81" fill="none" stroke="#D33A63" stroke-width="11"/>
+  <path d="M67.87 42.19 A18 18 0 0 1 52.19 57.87" fill="none" stroke="#FFC845" stroke-width="11"/>
+  <path d="M47.81 57.87 A18 18 0 0 1 32.13 42.19" fill="none" stroke="#2B7FC2" stroke-width="11"/>
+  <path d="M32.13 37.81 A18 18 0 0 1 47.81 22.13" fill="none" stroke="#34CFA0" stroke-width="11"/>
+</svg>

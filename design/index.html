@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TFGON design drafts</title>
+<style>
+/* Fonts: shipped in ./fonts, never loaded from a font service. Latin-ext only downloads if a page uses those letters (Welsh ŵ, ŷ, for instance). */
+@font-face { font-family: "Figtree"; font-weight: 400; font-display: swap; src: url(fonts/figtree/figtree-latin-400-normal.woff2) format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Figtree"; font-weight: 700; font-display: swap; src: url(fonts/figtree/figtree-latin-700-normal.woff2) format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Figtree"; font-weight: 400; font-display: swap; src: url(fonts/figtree/figtree-latin-ext-400-normal.woff2) format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Figtree"; font-weight: 700; font-display: swap; src: url(fonts/figtree/figtree-latin-ext-700-normal.woff2) format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Outfit"; font-weight: 400; font-display: swap; src: url(fonts/outfit/outfit-latin-400-normal.woff2) format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Outfit"; font-weight: 700; font-display: swap; src: url(fonts/outfit/outfit-latin-700-normal.woff2) format("woff2");
+  unicode-range: U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD; }
+@font-face { font-family: "Outfit"; font-weight: 400; font-display: swap; src: url(fonts/outfit/outfit-latin-ext-400-normal.woff2) format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+@font-face { font-family: "Outfit"; font-weight: 700; font-display: swap; src: url(fonts/outfit/outfit-latin-ext-700-normal.woff2) format("woff2");
+  unicode-range: U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF; }
+
+:root {
+  --pink: #D33A63; --yellow: #FFC845; --green: #34CFA0; --blue: #2B7FC2;
+  --ink: #1E2A36; --link: #1D5E99; --muted: #4A5866; --line: #D9DEE3;
+  --paper: #FFFFFF; --wash: #F4F6F8; --dark: #1E2A36;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 1440px; margin: 0 auto; padding: 32px 32px 64px; }
+h1 { font-size: 28px; margin: 0 0 6px; }
+h2 { font-size: 22px; margin: 48px 0 6px; padding-top: 24px; border-top: 2px solid var(--ink); }
+h3 { font-size: 17px; margin: 0 0 8px; }
+p.lede { color: var(--muted); max-width: 900px; margin: 0 0 8px; }
+a { color: var(--link); }
+.note { color: var(--muted); font-size: 14px; }
+code { font-size: 0.92em; background: var(--wash); padding: 1px 4px; border-radius: 3px; }
+
+/* Concept grid: four columns, one per concept, rows line up so Ed can read across. */
+.concepts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px; margin-top: 16px; }
+.card { border: 1px solid var(--line); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.card h3 .letter { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: var(--ink); color: #fff; text-align: center; line-height: 26px; font-size: 14px; margin-right: 6px; }
+.row-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); margin-bottom: 4px; }
+.big { background: var(--wash); border-radius: 8px; display: grid; place-items: center; height: 220px; }
+.big img { width: 180px; height: 180px; }
+.lockup { display: flex; align-items: center; gap: 12px; }
+.lockup img { width: 56px; height: 56px; flex: none; }
+.lockup .name { line-height: 1.05; font-size: 21px; color: var(--ink); }
+.lockup .name b { display: block; font-weight: 700; font-size: 25px; }
+.lockup.f-figtree .name { font-family: "Figtree"; }
+.lockup.f-outfit .name { font-family: "Outfit"; }
+.header-strip { display: flex; align-items: center; gap: 8px; height: 56px; padding: 0 12px; border: 1px solid var(--line); border-radius: 6px; }
+.header-strip img { height: 32px; width: 32px; }
+.header-strip span { font-family: "Figtree"; font-weight: 700; font-size: 15px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tabs { display: flex; gap: 14px; align-items: flex-end; }
+.tab { display: flex; align-items: center; gap: 6px; background: #E6E9ED; border-radius: 8px 8px 0 0; padding: 7px 10px; font-size: 12px; color: #333; }
+.tab img { width: 16px; height: 16px; }
+.pix { display: flex; gap: 12px; align-items: flex-end; }
+.pix figure { margin: 0; text-align: center; font-size: 11px; color: var(--muted); }
+.pix canvas { image-rendering: pixelated; border: 1px solid var(--line); background: #fff; display: block; }
+.dark { background: var(--dark); border-radius: 8px; padding: 14px; display: flex; align-items: center; gap: 10px; }
+.dark img { width: 52px; height: 52px; flex: none; }
+.dark .name { color: #fff; font-family: "Figtree"; line-height: 1.05; font-size: 16px; white-space: nowrap; }
+.dark .name b { display: block; font-size: 19px; }
+.dark .tiny { display: flex; gap: 8px; margin-left: auto; align-items: center; }
+.dark .tiny img { width: 32px; height: 32px; }
+.dark .tiny img.s16 { width: 16px; height: 16px; }
+.says { font-size: 15px; }
+.says strong, .weak strong { display: block; color: var(--ink); }
+.weak { font-size: 15px; color: var(--muted); }
+
+/* Colours */
+.swatches { display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; margin-top: 16px; }
+.sw { border: 1px solid var(--line); border-radius: 10px; overflow: hidden; }
+.sw .chip { height: 90px; }
+.sw .meta { padding: 10px 12px; font-size: 14px; }
+.sw .meta b { display: block; font-size: 16px; }
+.sw .old { color: var(--muted); font-size: 13px; }
+table { border-collapse: collapse; margin-top: 14px; font-size: 14px; }
+th, td { border: 1px solid var(--line); padding: 7px 10px; text-align: left; vertical-align: middle; }
+th { background: var(--wash); }
+.pass { background: #E3F4EA; } .large { background: #FFF4D6; } .fail { background: #FBE3E8; }
+.dot { display: inline-block; width: 14px; height: 14px; border-radius: 3px; vertical-align: -2px; margin-right: 6px; border: 1px solid rgba(0,0,0,.15); }
+.pins { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-top: 14px; }
+.pinbox { border: 1px solid var(--line); border-radius: 10px; padding: 12px; background: #F3F1EC; }
+.pinbox svg { width: 100%; height: auto; display: block; }
+.pinbox p { margin: 6px 0 0; font-size: 13px; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+
+/* Type */
+.specimen { border: 1px solid var(--line); border-radius: 10px; padding: 24px; }
+.specimen .alpha { font-size: 40px; line-height: 1.1; margin: 8px 0 14px; }
+.specimen h4 { font-size: 34px; line-height: 1.15; margin: 0 0 12px; font-weight: 700; }
+.specimen p { font-size: 18px; line-height: 1.55; margin: 0 0 12px; }
+.specimen .small { font-size: 15px; }
+.specimen .facts { font-family: system-ui, sans-serif; font-size: 14px; color: var(--muted); border-top: 1px solid var(--line); margin-top: 16px; padding-top: 12px; }
+.specimen .facts li { margin-bottom: 4px; }
+.f-figtree { font-family: "Figtree"; } .f-outfit { font-family: "Outfit"; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>TFGON logo, colours and typeface: drafts</h1>
+<p class="lede">Logo-mark directions (round 2 first, round 1 below it for comparison), one retuned palette and two typefaces, for Ed to choose from. Each concept is shown in the retuned colours, at full size, with the network's name in both typefaces, at header and browser-tab sizes, and on a dark background. Nothing on this page is loaded from outside, and none of it is on the live site.</p>
+<div style="border:2px solid #1E2A36;border-radius:10px;padding:14px 18px;margin:14px 0;max-width:900px;display:flex;gap:18px;align-items:center">
+  <img src="marks/i8-lowpoly.svg" width="72" alt="">
+  <div><b>Ed's choice (2026-11-28)</b>: mark <b>I8</b>, the coarse low-poly UK (<code>marks/i8-lowpoly.svg</code>), with its 16 px pixel icon (<code>marks/i8-lowpoly-small.svg</code>); the <b>neon palette</b> across the site (section 2), used on a mostly white site with one or two dark bands; typeface <b>Outfit</b>, regular and bold (<code>fonts/outfit/</code>). Everything else on this page is kept for the record.</div>
+</div>
+<p class="note">Files: marks in <code>design/marks/</code>, fonts in <code>design/fonts/</code>, checks in <code>design/tools/</code>. Brief: <code>briefs/design-v1.md</code>.</p>
+
+<section id="marks2">
+<h2>1. The logo mark, round 2: four new directions</h2>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2 to I7, and the low-poly I8, were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
+<div class="concepts" id="concepts2"></div>
+</section>
+
+<section id="marks">
+<h2>1a. Round 1, kept for comparison</h2>
+<p class="lede">All four start from the old idea, several communities coming together, without tracing the old drawing. The tab icons in the "16 px, real pixels" row are drawn at true size and then magnified, so you see exactly what a browser tab would show.</p>
+<div class="concepts" id="concepts"></div>
+</section>
+
+<section id="colours-neon">
+<h2>2. The colours, round 3: neon across the site (Ed's choice)</h2>
+<p class="lede">Ed chose (2026-11-28) to use the mark's neon colours as the site's palette, replacing the retuned set below. Ink and the link blue stay. The neon colours sing on dark and are for shapes only on white: none is safe for text on a white page.</p>
+<p class="lede"><b>How the site uses it</b> (Ed, 2026-11-28): mostly white with ink text. The neon appears in the mark, in the map pins (each with an ink outline) and in highlights. One or two dark bands, such as the header and the events section, let the neon glow, and there yellow, green and blue may also be used for text. Links on white stay link blue and underlined. Links inside a dark band need a light colour, to be chosen when the bands are built.</p>
+<div class="swatches">
+  <div class="sw"><div class="chip" style="background:#FF2E88"></div><div class="meta"><b>Pink #FF2E88</b>Shapes and highlights. Large text only on dark.<div class="old">retuned was #D33A63</div></div></div>
+  <div class="sw"><div class="chip" style="background:#FFE41F"></div><div class="meta"><b>Yellow #FFE41F</b>Shapes only on white. Fine as text on dark.<div class="old">retuned was #FFC845</div></div></div>
+  <div class="sw"><div class="chip" style="background:#22F2A0"></div><div class="meta"><b>Green #22F2A0</b>Shapes only on white. Fine as text on dark.<div class="old">retuned was #34CFA0</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1EBEFF"></div><div class="meta"><b>Blue #1EBEFF</b>On white, only with an ink outline. Fine as text on dark.<div class="old">retuned was #2B7FC2</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1E2A36"></div><div class="meta"><b>Ink #1E2A36</b>All words on white, pin outlines, dark backgrounds.<div class="old">unchanged</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1D5E99"></div><div class="meta"><b>Link #1D5E99</b>Links on white, always underlined.<div class="old">unchanged</div></div></div>
+</div>
+<div class="two">
+<div>
+<h3 style="margin-top:24px">Contrast (WCAG 2.2)</h3>
+<table>
+  <tr><th>Colour</th><th>On white</th><th>On ink (dark)</th></tr>
+  <tr><td><span class="dot" style="background:#FF2E88"></span>Pink</td><td class="large">3.50 — large text / shapes only</td><td class="large">4.17 — large text / shapes only</td></tr>
+  <tr><td><span class="dot" style="background:#FFE41F"></span>Yellow</td><td class="fail">1.28 — fails</td><td class="pass">11.37 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#22F2A0"></span>Green</td><td class="fail">1.47 — fails</td><td class="pass">9.92 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#1EBEFF"></span>Blue</td><td class="fail">2.13 — fails, even for shapes</td><td class="pass">6.85 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#1E2A36"></span>Ink</td><td class="pass">14.59 — AA text</td><td>—</td></tr>
+  <tr><td><span class="dot" style="background:#1D5E99"></span>Link</td><td class="pass">6.75 — AA text</td><td class="fail">2.16 — fails; links on dark need another colour</td></tr>
+</table>
+<p class="note">Compared with the retuned set: pink no longer passes for normal text on white (3.50, was 4.61), and blue no longer passes even for shapes (2.13, was 4.27). So on white every bright needs an ink outline as a pin or icon, and all words stay ink. On dark, yellow, green and blue pass for normal text, and pink for large text.</p>
+</div>
+<div>
+<h3 style="margin-top:24px">As map pins, checked for colour blindness</h3>
+<p class="note">Same method as below (Machado 2009, CIEDE2000 between the closest pair).</p>
+<div class="pins" id="pins-neon"></div>
+<p class="note">All four stay distinguishable: the closest pair is green/blue at 11.0 for blue-blindness, and 14.0 and 16.4 for the red–green types. That is a little closer than the retuned set for tritanopia (20.1).</p>
+</div>
+</div>
+</section>
+
+<section id="colours">
+<h2>2a. The colours, round 1: the old four, retuned (replaced by neon)</h2>
+<p class="lede">The same family of pink, yellow, green and blue. Pink is deepened and moved slightly towards raspberry, so it passes the text-contrast standard on white. Yellow is warmed to a golden tone so it holds its own on white. Green is softened from the old neon mint, and lifted, so pink and green stay apart for people with red–green colour blindness. Blue is a little lighter and less teal, so it sits with the others rather than looking darker than them. A near-black slate ink replaces the old grey for words, and a deep blue is the link colour.</p>
+<div class="swatches">
+  <div class="sw"><div class="chip" style="background:#D33A63"></div><div class="meta"><b>Pink #D33A63</b>Shapes: mark, pins, highlights. Also safe for large text on white.<div class="old">was #EF476F</div></div></div>
+  <div class="sw"><div class="chip" style="background:#FFC845"></div><div class="meta"><b>Yellow #FFC845</b>Shapes only, never text on white. Text on yellow uses ink.<div class="old">was #FFD166</div></div></div>
+  <div class="sw"><div class="chip" style="background:#34CFA0"></div><div class="meta"><b>Green #34CFA0</b>Shapes only, never text on white. Text on green uses ink.<div class="old">was #06D6A0</div></div></div>
+  <div class="sw"><div class="chip" style="background:#2B7FC2"></div><div class="meta"><b>Blue #2B7FC2</b>Shapes, and large text or icons on white.<div class="old">was #118AB2</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1E2A36"></div><div class="meta"><b>Ink #1E2A36</b>All words, outlines of pins, and the dark background.<div class="old">was #393E46</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1D5E99"></div><div class="meta"><b>Link #1D5E99</b>Links, always underlined, so they don't rely on colour.<div class="old">new</div></div></div>
+</div>
+
+<div class="two">
+<div>
+<h3 style="margin-top:24px">Contrast (WCAG 2.2)</h3>
+<p class="note">AA for normal text needs 4.5:1. Large text (24 px, or 19 px bold) and shapes such as icons and pins need 3:1.</p>
+<table>
+  <tr><th>Colour</th><th>On white</th><th>Against ink</th></tr>
+  <tr><td><span class="dot" style="background:#D33A63"></span>Pink</td><td class="pass">4.61 — AA text</td><td class="large">3.16 — large text / shapes only</td></tr>
+  <tr><td><span class="dot" style="background:#FFC845"></span>Yellow</td><td class="fail">1.54 — fails</td><td class="pass">9.45 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#34CFA0"></span>Green</td><td class="fail">1.99 — fails</td><td class="pass">7.35 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#2B7FC2"></span>Blue</td><td class="large">4.27 — large text / shapes only</td><td class="large">3.42 — large text / shapes only</td></tr>
+  <tr><td><span class="dot" style="background:#1E2A36"></span>Ink</td><td class="pass">14.59 — AA text (and AAA)</td><td>—</td></tr>
+  <tr><td><span class="dot" style="background:#1D5E99"></span>Link</td><td class="pass">6.75 — AA text</td><td class="fail">2.16 — fails, so links are underlined</td></tr>
+</table>
+<p class="note">"Against ink" means the colour as a background behind ink words, or ink on it, or the colour on the dark background. Yellow and green fail on white, even for shapes, so pins carry an ink outline that gives every pin 3:1 against the map whatever its fill. For comparison, the old colours: pink 3.62, yellow 1.44, green 1.89, blue 3.96 on white, and the old grey words 10.76.</p>
+</div>
+<div>
+<h3 style="margin-top:24px">As map pins, checked for colour blindness</h3>
+<p class="note">Simulated with the Machado, Oliveira &amp; Fernandes (2009) model at full strength. "Closest pair" is the CIEDE2000 colour difference between the two hardest pins to tell apart; about 10 is clearly different side by side, below about 5 they start to merge.</p>
+<div class="pins" id="pins"></div>
+<p class="note">Old palette, same check: protanopia 13.5, deuteranopia 12.8 (pink/green), tritanopia 19.1. Under every kind of colour vision, the hardest pair to tell apart is further apart in the retuned set. The map should still never rely on colour alone: each pin will carry its community's name on hover and in its entry.</p>
+</div>
+</div>
+</section>
+
+<section id="type">
+<h2>3. The typeface: two candidates</h2>
+<p class="lede">Both are open-licence geometric sans-serifs, in the friendly, round spirit of the old Strawford. They are shipped with the site's own files, regular and bold only.</p>
+<div class="two">
+  <div class="specimen f-figtree">
+    <h3 style="font-family:system-ui">Figtree</h3>
+    <div class="alpha">Aa Gg Rr 0123 &amp; ŵ ŷ</div>
+    <h4>Tech for Good Organisers Network</h4>
+    <p>Tech for Good Organisers Network UK brings together people running tech for good communities to share knowledge, strengthen existing networks, and support new ones so the movement can have real, lasting impact.</p>
+    <p class="small">Tech for good is the intentional use of technology to drive positive outcomes for people and planet. <a href="#type">See who is in the network</a> or <a href="#type"><b>apply to join</b></a>.</p>
+    <ul class="facts">
+      <li><b>Licence:</b> SIL Open Font License 1.1 (<code>design/fonts/figtree/OFL.txt</code>). Designed by Erik Kennedy.</li>
+      <li><b>Source:</b> npm package <code>@fontsource/figtree</code> 5.3.0.</li>
+      <li><b>Size:</b> regular + bold, Latin: 22.8 kB (11.4 + 11.4). Extended Latin, loaded only when used: +12.4 kB.</li>
+      <li>Has a true italic if ever wanted (about +12 kB per weight); not shipped.</li>
+      <li>Character: warmer and more open, a little narrower; reads easily at body size.</li>
+    </ul>
+  </div>
+  <div class="specimen f-outfit">
+    <h3 style="font-family:system-ui">Outfit</h3>
+    <div class="alpha">Aa Gg Rr 0123 &amp; ŵ ŷ</div>
+    <h4>Tech for Good Organisers Network</h4>
+    <p>Tech for Good Organisers Network UK brings together people running tech for good communities to share knowledge, strengthen existing networks, and support new ones so the movement can have real, lasting impact.</p>
+    <p class="small">Tech for good is the intentional use of technology to drive positive outcomes for people and planet. <a href="#type">See who is in the network</a> or <a href="#type"><b>apply to join</b></a>.</p>
+    <ul class="facts">
+      <li><b>Licence:</b> SIL Open Font License 1.1 (<code>design/fonts/outfit/OFL.txt</code>). The Outfit Project Authors.</li>
+      <li><b>Source:</b> npm package <code>@fontsource/outfit</code> 5.3.0.</li>
+      <li><b>Size:</b> regular + bold, Latin: 28.1 kB (14.0 + 14.1). Extended Latin, loaded only when used: +12.9 kB.</li>
+      <li>No italic exists; a browser would slant it artificially if asked.</li>
+      <li>Character: purer circles, closer to the old Strawford; more striking in headings, a little less easy in long body text.</li>
+    </ul>
+  </div>
+</div>
+</section>
+
+</main>
+
+<script>
+// Concept data. Files are in ./marks; each has a full mark, a small (16 px) version and, where needed, a dark-background version.
+const concepts = [
+  { id: "a", name: "Four strokes, refreshed", full: "a-four-strokes.svg", small: "a-four-strokes-small.svg", dark: "a-four-strokes.svg",
+    says: "Four rounded strokes, each overlapping the next, make one shared frame: the old mark's idea, redrawn calmer, with no one community on top.",
+    weak: "Closest to the old logo, so it reads as a tidy-up rather than a fresh start; a rounded square frame is also a common shape." },
+  { id: "b", name: "Four leaves", full: "b-four-leaves.svg", small: "b-four-leaves-small.svg", dark: "b-four-leaves.svg",
+    says: "Four leaves grow from one meeting point: separate communities, each its own shape, joined at the centre and growing outwards.",
+    weak: "Organic rather than techy, and at a glance it can read as a flower, a fan or a propeller rather than a network." },
+  { id: "c", name: "Map pin", full: "c-map-pin.svg", small: "c-map-pin-small.svg", dark: "c-map-pin-on-dark.svg",
+    says: "A map pin whose head is a ring of four communities ties the mark to the directory's map: find the organisers near you.",
+    weak: "A pin says one place, not a UK-wide network, and location pins are very common; the tab icon has to drop the pin and keep only the ring." },
+  { id: "d", name: "Dot map", full: "d-dot-map.svg", small: "d-dot-map-small.svg", dark: "d-dot-map-on-dark.svg",
+    says: "The UK drawn in dots, with four coloured communities lighting up across it: the network's reach, at a glance.",
+    weak: "Detailed, so it needs a simplified tab icon that no longer shows the map, and the lit dots can be read as claims about who is where." },
+];
+const el = (h) => { const t = document.createElement("template"); t.innerHTML = h.trim(); return t.content.firstChild; };
+const lock = (f, img) => `<div class="lockup f-${f}"><img src="marks/${img}" alt=""><div class="name"><b>Tech for Good</b>Organisers Network</div></div>`;
+const concepts2 = [
+  { id: "e", name: "Crossing strokes", full: "e-crossing-strokes.svg", small: "e-crossing-strokes-small.svg", dark: "e-crossing-strokes.svg",
+    says: "Four strokes of different lengths cross, and where two communities meet a new colour appears: coming together, shown literally, and the old overlapping strokes reborn.",
+    unlike: "Unequal: pink leads and green is a small accent. The strokes blend where they cross instead of sitting side by side as flat colour, and the mark has no centre and no rotational symmetry.",
+    weak: "The blended tones (deep purple, red-orange, dark olive) add colours outside the palette, and where pink crosses blue or green it goes very dark." },
+  { id: "f", name: "Converging threads", full: "f-threads.svg", small: "f-threads-small.svg", dark: "f-threads.svg",
+    says: "Four threads start in different places and run together into one cable: separate communities, one network, still each its own colour.",
+    unlike: "Drawn in line, not filled shapes. It reads left to right, as a journey, with no centre and no symmetry.",
+    weak: "Thin lines vanish at 16 px, so the tab icon needs its own thicker drawing. It could also be read as cables, a data flow or a transport map." },
+  { id: "g", name: "tfg letters", full: "g-letters.svg", small: "g-letters-small.svg", smallDark: "g-letters-small-on-dark.svg", dark: "g-letters-on-dark.svg",
+    says: "The letters t, f and g share one crossbar, made of the four colours: the link that runs through every community.",
+    unlike: "A letter mark, mostly ink, with colour as one thin band of unequal lengths. No geometric badge and no symmetry.",
+    weak: "Says \"tfg\", not TFGON, and the letters are drawn quickly here; a letter mark needs the most hand-tuning of the four before it looks right." },
+  { id: "h", name: "Constellation", full: "h-constellation.svg", small: "h-constellation-small.svg", smallDark: "h-constellation-small-on-dark.svg", dark: "h-constellation-on-dark.svg",
+    says: "Communities of different sizes, joined by lines into one loose network, with no hub in charge: it echoes the directory's map without drawing the UK.",
+    unlike: "Uneven sizes and positions, one dominant pink, ink lines. Nothing repeats round a centre.",
+    weak: "Connected dots are a common 'network' picture (molecules, share icons), so it is distinct from Google but not from everyone." },
+  { id: "i", name: "Pixel map", full: "i-pixel-map.svg", small: "i-pixel-map-small.svg", smallDark: "i-pixel-map-small-on-dark.svg", dark: "i-pixel-map-on-dark.svg",
+    says: "The UK built from square pixels, with communities as coloured squares: the network's reach, made of small pieces, and a nod to the tech in tech for good.",
+    unlike: "Square, hard-edged pixels instead of rounded shapes. Ink dominates, colour is a few uneven squares (one large pink), and a map has no centre or symmetry.",
+    weak: "Pixel art can read as retro gaming rather than serious, and the coloured squares can look like claims about who is where. The squares were placed by a script from a rough outline, so they need hand pixel-pushing." },
+  { id: "i2", name: "Pixel map, coloured regions", full: "i2-pixel-regions.svg", small: "i2-pixel-regions-small.svg", dark: "i2-pixel-regions.svg",
+    says: "The whole country made of coloured pixels, each square taking the colour of its nearest community: the map split into patches, which is also how an application finds its nearest organiser.",
+    unlike: "Square pixels, a map shape with no centre or symmetry, and patches of very different sizes and outlines.",
+    weak: "Four patches imply four fixed territories, which is wrong for a loose network of six or more communities. The pink and blue patches are drawn smaller than the green and yellow ones, but nothing about that is meaningful." },
+  { id: "i3", name: "Pixel map, mosaic", full: "i3-pixel-mosaic.svg", small: "i3-pixel-mosaic-small.svg", dark: "i3-pixel-mosaic.svg",
+    says: "The whole country made of coloured pixels, mixed everywhere: communities all over the UK, side by side, with no borders.",
+    unlike: "Square pixels, a map with no centre or symmetry, and an uneven mix (pink most, yellow least) instead of four equal quarters.",
+    weak: "Busy: at 16 px it reads as a colourful speckled shape more than as the UK, and the random pattern means nothing in particular." },
+  { id: "i4", name: "Pixel mosaic on a dark tile", full: "i4-pixel-mosaic-tile.svg", small: "i4-pixel-mosaic-tile-small.svg", dark: "i4-pixel-mosaic-tile.svg",
+    says: "The UK made of larger coloured squares, all four colours spread evenly across the country, on a near-black tile: every community everywhere, equal partners.",
+    unlike: "Square pixels with gaps, like mosaic tiles, a map shape with no centre or symmetry, and a dark square tile rather than a floating badge.",
+    weak: "Bigger squares mean a coarser UK; at 16 px it is about 50 squares, so the outline is only roughly British. Equal shares bring back four equal colours, though scattered rather than in quarters. On a dark page the tile's edge disappears." },
+  { id: "i5", name: "Pixel caricature, equal values", full: "i5-pixel-caricature.svg", small: "i5-pixel-caricature-small.svg", dark: "i5-pixel-caricature.svg",
+    says: "A cartoon UK in big squares (jagged Scotland, pinched waist, Wales sticking out, a Cornwall tail, Northern Ireland as its own block, well clear of Great Britain), with all four colours at nearly the same lightness, so no community stands out.",
+    unlike: "Square pixels, a hand-drawn caricature with no centre or symmetry, on a dark tile.",
+    weak: "Its colours are lighter, fully saturated pink and blue and a deeper, golden yellow than the agreed palette (L* 63 to 73 instead of 49 to 83, as saturated as sRGB allows at that lightness). Equal lightness also makes pink and green harder to tell apart for red-green colour blindness (7.5, down from 17.4), which is fine here because no square carries meaning." },
+  { id: "i6", name: "Pixel caricature, almost neon", full: "i6-pixel-neon.svg", small: "i6-pixel-neon-small.svg", dark: "i6-pixel-neon.svg",
+    says: "A simplified, angular UK (a block for Scotland, a stepped triangle for England, a straight tail for Cornwall, a bar for Northern Ireland) in big squares, lit up in near-neon colours on the dark tile: energetic, digital, unmistakably tech.",
+    unlike: "Square pixels, a hand-drawn caricature with no centre or symmetry, and electric colours on dark rather than flat primaries on white.",
+    weak: "The neon colours are a third palette beside the agreed one and I5's. Neon can't keep the values equal: pink is darker than yellow and green (L* 57 to 90), so in greyscale the squares speckle. It can feel loud next to calm body text." },
+  { id: "i7", name: "Minimal pixel UK, neon", full: "i7-pixel-minimal.svg", small: "i7-pixel-minimal-small.svg", dark: "i7-pixel-minimal.svg",
+    says: "The UK in about a dozen big neon squares on a dark tile: a stepped Scotland, a one-square waist, England, an attached Cornwall tail, and a three-square Northern Ireland. The fewest pieces that still read as the UK.",
+    unlike: "Square pixels in a hand-drawn, lopsided shape with no centre or symmetry, in electric colours on dark.",
+    weak: "So few squares that it leans on Northern Ireland and the waist to read as the UK; at a glance it can also read as a game sprite. The neon colours are a separate palette from the site's." },
+  { id: "i8", name: "Low-poly UK", full: "i8-lowpoly.svg", small: "i8-lowpoly-small.svg", dark: "i8-lowpoly.svg",
+    says: "An angular, exaggerated UK made of big neon facets on a dark tile: many pieces making one country, with depth and movement. The tab icon is the same mark redrawn in pixels.",
+    unlike: "Irregular triangles of different sizes, a lopsided map with no centre or symmetry, electric colours on dark.",
+    weak: "More of a picture than a symbol, so it needs the separate pixel icon at 16 px. Its neon colours are a palette of their own beside the site's. The facets were scattered by a script and may want hand-adjusting." },
+];
+function render(list, gridId) {
+const grid = document.getElementById(gridId);
+for (const c of list) {
+  grid.appendChild(el(`<div class="card">
+    <h3><span class="letter">${c.id.toUpperCase()}</span>${c.name}</h3>
+    <div><div class="row-label">Full size</div><div class="big"><img src="marks/${c.full}" alt="Concept ${c.id.toUpperCase()}"></div></div>
+    <div><div class="row-label">With the name, Figtree</div>${lock("figtree", c.full)}</div>
+    <div><div class="row-label">With the name, Outfit</div>${lock("outfit", c.full)}</div>
+    <div><div class="row-label">Header, 32 px tall</div><div class="header-strip"><img src="marks/${c.full}" alt=""><span>Tech for Good Organisers Network</span></div></div>
+    <div><div class="row-label">Browser tab (16 px icon)</div><div class="tabs"><div class="tab"><img src="marks/${c.small}" alt="">TFGON</div><div class="tab"><img src="marks/${c.full}" alt="">full mark</div></div></div>
+    <div><div class="row-label">16 px and 32 px, real pixels, magnified</div><div class="pix">
+      <figure><canvas data-src="marks/${c.small}" data-px="16" width="16" height="16" style="width:64px;height:64px"></canvas>small, 16</figure>
+      <figure><canvas data-src="marks/${c.full}" data-px="16" width="16" height="16" style="width:64px;height:64px"></canvas>full, 16</figure>
+      <figure><canvas data-src="marks/${c.full}" data-px="32" width="32" height="32" style="width:64px;height:64px"></canvas>full, 32</figure>
+    </div></div>
+    <div><div class="row-label">On dark</div><div class="dark"><img src="marks/${c.dark}" alt=""><div class="name"><b>Tech for Good</b>Organisers Network</div>
+      <div class="tiny"><img class="s16" src="marks/${c.smallDark || c.small}" alt="" title="16 px"></div></div></div>
+    <div class="says"><strong>What it says</strong>${c.says}</div>
+    ${c.unlike ? `<div class="says"><strong>What makes it unlike a Google logo</strong>${c.unlike}</div>` : ""}
+    <div class="weak"><strong>Main weakness</strong>${c.weak}</div>
+  </div>`));
+}
+}
+render(concepts2, "concepts2");
+render(concepts, "concepts");
+// Draw each icon at true pixel size, then let CSS magnify it without smoothing.
+for (const cv of document.querySelectorAll("canvas[data-src]")) {
+  const img = new Image(); const px = +cv.dataset.px;
+  img.onload = () => cv.getContext("2d").drawImage(img, 0, 0, px, px);
+  img.src = cv.dataset.src;
+}
+// Pins under each kind of colour vision. Values from design/tools/palette_check.py.
+const sims = {
+  "Typical vision": { pins: ["#D33A63", "#FFC845", "#34CFA0", "#2B7FC2"], closest: "yellow/green 38.8" },
+  "Protanopia (red-blind)": { pins: ["#606164", "#E0C831", "#CAC09E", "#6082C5"], closest: "yellow/green 17.8" },
+  "Deuteranopia (green-blind)": { pins: ["#88805F", "#EDD64B", "#B6B2A3", "#4A74C1"], closest: "pink/green 17.4" },
+  "Tritanopia (blue-blind)": { pins: ["#E6134B", "#FFB6AE", "#00D0C2", "#008F97"], closest: "green/blue 20.1" },
+};
+const pinPath = (x, y, fill) => `<path transform="translate(${x} ${y}) scale(0.42)" d="M50 96 C38 80 18 64 18 40 A32 32 0 1 1 82 40 C82 64 62 80 50 96 Z" fill="${fill}" stroke="#1E2A36" stroke-width="4"/><circle cx="${x + 21}" cy="${y + 16.8}" r="5" fill="#fff" stroke="#1E2A36" stroke-width="1.6"/>`;
+const pinsEl = document.getElementById("pins");
+for (const [name, s] of Object.entries(sims)) {
+  const xy = [[8, 6], [52, 10], [18, 48], [64, 52]];
+  pinsEl.appendChild(el(`<div class="pinbox"><svg viewBox="0 0 110 100" role="img" aria-label="${name}">${s.pins.map((p, i) => pinPath(xy[i][0], xy[i][1], p)).join("")}</svg><p><b>${name}</b><br>closest pair: ${s.closest}</p></div>`));
+}
+const simsNeon = {
+  "Typical vision": { pins: ["#FF2E88", "#FFE41F", "#22F2A0", "#1EBEFF"], closest: "yellow/green 33.7" },
+  "Protanopia (red-blind)": { pins: ["#656F8A", "#FBDD00", "#EFDF9B", "#9DBCFF"], closest: "yellow/green 14.0" },
+  "Deuteranopia (green-blind)": { pins: ["#9C9783", "#FFE734", "#D8CEA5", "#81A9FE"], closest: "pink/green 16.4" },
+  "Tritanopia (blue-blind)": { pins: ["#FF0058", "#FFD2C3", "#00F1DD", "#00CFD4"], closest: "green/blue 11.0" },
+};
+const pinsNeonEl = document.getElementById("pins-neon");
+for (const [name, s] of Object.entries(simsNeon)) {
+  const xy = [[8, 6], [52, 10], [18, 48], [64, 52]];
+  pinsNeonEl.appendChild(el(`<div class="pinbox"><svg viewBox="0 0 110 100" role="img" aria-label="${name}">${s.pins.map((p, i) => pinPath(xy[i][0], xy[i][1], p)).join("")}</svg><p><b>${name}</b><br>closest pair: ${s.closest}</p></div>`));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="TFGON mark: four strokes, small">
+  <defs><clipPath id="a-corner"><rect x="0" y="0" width="40" height="40"/></clipPath></defs>
+  <g transform="rotate(0 50 50)">
+    <rect x="10" y="10" width="64" height="26" rx="13.0" fill="#34CFA0" transform="rotate(0 50 50)"/>
+    <rect x="10" y="10" width="64" height="26" rx="13.0" fill="#2B7FC2" transform="rotate(90 50 50)"/>
+    <rect x="10" y="10" width="64" height="26" rx="13.0" fill="#FFC845" transform="rotate(180 50 50)"/>
+    <rect x="10" y="10" width="64" height="26" rx="13.0" fill="#D33A63" transform="rotate(270 50 50)"/>
+    <rect x="10" y="10" width="64" height="26" rx="13.0" fill="#34CFA0" clip-path="url(#a-corner)"/>
+  </g>
+</svg>

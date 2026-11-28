@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="TFGON mark: four leaves">
+  <path d="M46.5 46.5 Q46.5 12 12 12 Q12 46.5 46.5 46.5 Z" fill="#D33A63" transform="rotate(0 50 50)"/>
+  <path d="M46.5 46.5 Q46.5 12 12 12 Q12 46.5 46.5 46.5 Z" fill="#34CFA0" transform="rotate(90 50 50)"/>
+  <path d="M46.5 46.5 Q46.5 12 12 12 Q12 46.5 46.5 46.5 Z" fill="#2B7FC2" transform="rotate(180 50 50)"/>
+  <path d="M46.5 46.5 Q46.5 12 12 12 Q12 46.5 46.5 46.5 Z" fill="#FFC845" transform="rotate(270 50 50)"/>
+</svg>

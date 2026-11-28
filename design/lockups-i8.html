@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en-GB"><head><meta charset="utf-8"><title>I8 lockups</title>
+<style>
+@font-face { font-family: "Figtree"; font-weight: 400; src: url(fonts/figtree/figtree-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Figtree"; font-weight: 700; src: url(fonts/figtree/figtree-latin-700-normal.woff2) format("woff2"); }
+@font-face { font-family: "Outfit"; font-weight: 400; src: url(fonts/outfit/outfit-latin-400-normal.woff2) format("woff2"); }
+@font-face { font-family: "Outfit"; font-weight: 700; src: url(fonts/outfit/outfit-latin-700-normal.woff2) format("woff2"); }
+body { margin: 0; background: #fff; color: #1E2A36; font: 14px system-ui; padding: 28px; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+h2 { font: 600 13px system-ui; letter-spacing: .08em; text-transform: uppercase; color: #4A5866; margin: 0 0 18px; }
+.row { margin-bottom: 28px; }
+.lab { font-size: 12px; color: #4A5866; margin-bottom: 8px; }
+.lock { display: flex; align-items: center; }
+.stack b { display: block; font-weight: 700; }
+.big .lock { gap: 18px; } .big img { width: 96px; } .big .stack { font-size: 30px; line-height: 1.02; } .big .stack b { font-size: 37px; }
+.mid .lock { gap: 12px; } .mid img { width: 56px; } .mid .stack { font-size: 19px; line-height: 1.04; } .mid .stack b { font-size: 23px; }
+.header { display: flex; align-items: center; gap: 10px; height: 60px; padding: 0 14px; border: 1px solid #D9DEE3; border-radius: 6px; }
+.header img { width: 32px; } .header span { font-weight: 700; font-size: 18px; }
+.dark { background: #1E2A36; color: #fff; border-radius: 10px; padding: 18px 20px; }
+.dark .lock { gap: 14px; } .dark img { width: 60px; } .dark .stack { font-size: 20px; line-height: 1.04; } .dark .stack b { font-size: 25px; }
+.f { } .figtree { font-family: "Figtree"; } .outfit { font-family: "Outfit"; }
+</style></head>
+<body>
+<div class="cols">
+<div class="figtree">
+  <h2>Figtree</h2>
+  <div class="row big"><div class="lab">Full size</div><div class="lock"><img src="marks/i8-lowpoly.svg" alt=""><div class="stack"><b>Tech for Good</b>Organisers Network</div></div></div>
+  <div class="row mid"><div class="lab">Medium</div><div class="lock"><img src="marks/i8-lowpoly.svg" alt=""><div class="stack"><b>Tech for Good</b>Organisers Network</div></div></div>
+  <div class="row"><div class="lab">Header, 32 px mark, one line</div><div class="header"><img src="marks/i8-lowpoly.svg" alt=""><span>Tech for Good Organisers Network</span></div></div>
+  <div class="row"><div class="lab">On a dark band</div><div class="dark"><div class="lock"><img src="marks/i8-lowpoly.svg" alt=""><div class="stack"><b>Tech for Good</b>Organisers Network</div></div></div></div>
+</div>
+<div class="outfit">
+  <h2>Outfit</h2>
+  <div class="row big"><div class="lab">Full size</div><div class="lock"><img src="marks/i8-lowpoly.svg" alt=""><div class="stack"><b>Tech for Good</b>Organisers Network</div></div></div>
+  <div class="row mid"><div class="lab">Medium</div><div class="lock"><img src="marks/i8-lowpoly.svg" alt=""><div class="stack"><b>Tech for Good</b>Organisers Network</div></div></div>
+  <div class="row"><div class="lab">Header, 32 px mark, one line</div><div class="header"><img src="marks/i8-lowpoly.svg" alt=""><span>Tech for Good Organisers Network</span></div></div>
+  <div class="row"><div class="lab">On a dark band</div><div class="dark"><div class="lock"><img src="marks/i8-lowpoly.svg" alt=""><div class="stack"><b>Tech for Good</b>Organisers Network</div></div></div></div>
+</div>
+</div></body></html>
