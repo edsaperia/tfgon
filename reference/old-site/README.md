@@ -8,3 +8,12 @@ The coordinator saved these on 2026-11-27 from https://www.techforgoodorganisers
 - `homepage-text.md`: the old homepage's words.
 
 Nothing in this folder is published. Pages publishes only `/docs`.
+
+## Photos (saved 2026-11-28)
+
+These are the old site's photos of network members, in `photos/`, with the old site's alt text:
+- `members-street-2022.jpg`: "A picture of some of the members of the Tech for Good Organisers Network smiling and being silly." (dated 14 October 2022)
+- `member-flipchart.jpg`: "A photo of a person standing next to some flipchart paper." (old filename `ellie.jpg`)
+- `members-table.png`: "A group of people sitting at a table and smiling."
+
+The old site also used four Unsplash stock photos (a VR headset, laptops on a desk, and two meeting scenes). They are stock, not the network, and were not saved.
