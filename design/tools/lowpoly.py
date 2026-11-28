@@ -154,3 +154,44 @@ if __name__ == "__main__":
         for name, seed in (("coarse", 3), ("coarse-b", 11)):
             txt, n = svg(4, 0, seed, f"low-poly UK, {name}, stretched x{st}", 1.4, stretch=st)
             (OUT / f"lp-{name}-x{str(st).replace('.', '')}.svg").write_text(txt)
+
+
+# I8: the chosen low-poly mark (Ed, 2026-11-28: coarse, first mesh, stretched x1.25) and its 16 px pixel icon.
+CHOSEN = dict(count_gb=4, count_ni=0, seed=3, min_d=1.4, stretch=1.25)
+
+def pixel_icon(px=16, margin=1):
+    """Sample the chosen mark onto a px x px grid: each pixel takes the colour of the facet under its centre."""
+    c = CHOSEN
+    tris = mesh(GB, c["count_gb"], c["seed"], c["min_d"]) + mesh(NI, c["count_ni"], c["seed"] + 1, c["min_d"] * 0.8)
+    tris = [tuple((x * c["stretch"], y) for x, y in t) for t in tris]
+    col = colour(tris, c["seed"])
+    xs = [p[0] for t in tris for p in t]; ys = [p[1] for t in tris for p in t]
+    w, h = max(xs) - min(xs), max(ys) - min(ys)
+    inner = px - 2 * margin; scale = inner / max(w, h)
+    ox = (px - w * scale) / 2 - min(xs) * scale; oy = (px - h * scale) / 2 - min(ys) * scale
+    grid = {}
+    for r in range(px):
+        for q in range(px):
+            x = (q + 0.5 - ox) / scale; y = (r + 0.5 - oy) / scale
+            for i, t in enumerate(tris):
+                if contains(t, (x, y)): grid[(r, q)] = col[i]; break
+    return grid
+
+def icon_svg(grid, px=16):
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {px} {px}" shape-rendering="crispEdges" role="img" aria-label="TFGON mark: low-poly UK, 16 px pixel icon">',
+           f'  <rect width="{px}" height="{px}" rx="{px * 0.12:g}" fill="{INK}"/>']
+    out += [f'  <rect x="{q}" y="{r}" width="1" height="1" fill="{c}"/>' for (r, q), c in sorted(grid.items())]
+    return "\n".join(out + ["</svg>"]) + "\n"
+
+def ascii_grid(grid, px=16):
+    return "\n".join("".join("#" if (r, q) in grid else "." for q in range(px)) for r in range(px))
+
+if __name__ == "__main__":
+    full, n = svg(CHOSEN["count_gb"], CHOSEN["count_ni"], CHOSEN["seed"], "low-poly UK", CHOSEN["min_d"], stretch=CHOSEN["stretch"])
+    (OUT.parent / "i8-lowpoly.svg").write_text(full)
+    g = pixel_icon()
+    # Hand touch-up: the Cornwall spike samples to one loose pixel, so extend it diagonally in the spike's colour.
+    tip = g[(14, 5)]
+    g[(13, 5)] = tip; g[(14, 4)] = tip
+    (OUT.parent / "i8-lowpoly-small.svg").write_text(icon_svg(g))
+    print(ascii_grid(g))

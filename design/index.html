@@ -110,7 +110,7 @@ th { background: var(--wash); }
 
 <section id="marks2">
 <h2>1. The logo mark, round 2: four new directions</h2>
-<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2 to I7 were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
+<p class="lede">Ed's review of round 1: all four marks looked like Google product logos. In words, what they shared with that family: four equal flat colours, rounded geometric shapes, arranged evenly round a centre so the mark looks the same when turned. Round 2 keeps the retuned colours and breaks that pattern on purpose. I, the pixel map, and its fully coloured versions I2 to I7, and the low-poly I8, were added afterwards at Ed's request. Each direction says how. These are directions, not finished marks.</p>
 <div class="concepts" id="concepts2"></div>
 </section>
 
@@ -256,6 +256,10 @@ const concepts2 = [
     says: "The UK in about a dozen big neon squares on a dark tile: a stepped Scotland, a one-square waist, England, an attached Cornwall tail, and a three-square Northern Ireland. The fewest pieces that still read as the UK.",
     unlike: "Square pixels in a hand-drawn, lopsided shape with no centre or symmetry, in electric colours on dark.",
     weak: "So few squares that it leans on Northern Ireland and the waist to read as the UK; at a glance it can also read as a game sprite. The neon colours are a separate palette from the site's." },
+  { id: "i8", name: "Low-poly UK", full: "i8-lowpoly.svg", small: "i8-lowpoly-small.svg", dark: "i8-lowpoly.svg",
+    says: "An angular, exaggerated UK made of big neon facets on a dark tile: many pieces making one country, with depth and movement. The tab icon is the same mark redrawn in pixels.",
+    unlike: "Irregular triangles of different sizes, a lopsided map with no centre or symmetry, electric colours on dark.",
+    weak: "More of a picture than a symbol, so it needs the separate pixel icon at 16 px. Its neon colours are a palette of their own beside the site's. The facets were scattered by a script and may want hand-adjusting." },
 ];
 function render(list, gridId) {
 const grid = document.getElementById(gridId);
