@@ -46,9 +46,9 @@
   --raised: #283849;       /* panels and cards */
   --sunken: #17212B;       /* form fields */
   --line: #3E5064;         /* borders and dividers */
-  --text: #FFFFFF;         /* body text: 14.59:1 on ink, 12.10:1 on raised */
+  --text: #FFFFFF;         /* body text: 14.59:1 on ink, 11.99:1 on raised */
   --text-soft: #C9D3DD;    /* secondary text: 9.62:1 on ink, 7.90:1 on raised */
-  --link: var(--blue);     /* links, underlined: 6.85:1 on ink, 5.68:1 on raised */
+  --link: var(--blue);     /* links, underlined: 6.85:1 on ink, 5.63:1 on raised */
   --focus: var(--yellow);
 
   /* The directory map's community circles. */
