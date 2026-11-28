@@ -159,12 +159,34 @@ if __name__ == "__main__":
 # I8: the chosen low-poly mark (Ed, 2026-11-28: coarse, first mesh, stretched x1.25) and its 16 px pixel icon.
 CHOSEN = dict(count_gb=4, count_ni=0, seed=3, min_d=1.4, stretch=1.25)
 
+def chosen_mesh():
+    """The chosen mesh and colours, with Ed's hand overrides applied."""
+    c = CHOSEN
+    gb = mesh(GB, c["count_gb"], c["seed"], c["min_d"]); ni = mesh(NI, c["count_ni"], c["seed"] + 1, c["min_d"] * 0.8)
+    tris = [tuple((x * c["stretch"], y) for x, y in t) for t in gb + ni]
+    col = colour(tris, c["seed"])
+    # Override (Ed, 2026-11-28): Northern Ireland's top facet is pink.
+    ni_idx = range(len(gb), len(tris))
+    top = min(ni_idx, key=lambda i: sum(p[1] for p in tris[i]) / 3)
+    col[top] = NEON["pink"]
+    return tris, col
+
+def chosen_svg(label="low-poly UK"):
+    tris, col = chosen_mesh()
+    S, pad = 10.0, 0.6
+    xs = [p[0] for t in tris for p in t]; ys = [p[1] for t in tris for p in t]
+    w, h = max(xs) - min(xs), max(ys) - min(ys); scale = (S - 2 * pad) / max(w, h)
+    ox = (S - w * scale) / 2 - min(xs) * scale; oy = (S - h * scale) / 2 - min(ys) * scale
+    out = [f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {S:g} {S:g}" role="img" aria-label="TFGON mark: {label}">',
+           f'  <rect width="{S:g}" height="{S:g}" rx="{S * 0.12:g}" fill="{INK}"/>']
+    for i, t in enumerate(tris):
+        pts = " ".join(f"{x * scale + ox:.3f},{y * scale + oy:.3f}" for x, y in t)
+        out.append(f'  <polygon points="{pts}" fill="{col[i]}" stroke="{col[i]}" stroke-width="0.02" stroke-linejoin="round"/>')
+    return "\n".join(out + ["</svg>"]) + "\n"
+
 def pixel_icon(px=16, margin=1):
     """Sample the chosen mark onto a px x px grid: each pixel takes the colour of the facet under its centre."""
-    c = CHOSEN
-    tris = mesh(GB, c["count_gb"], c["seed"], c["min_d"]) + mesh(NI, c["count_ni"], c["seed"] + 1, c["min_d"] * 0.8)
-    tris = [tuple((x * c["stretch"], y) for x, y in t) for t in tris]
-    col = colour(tris, c["seed"])
+    tris, col = chosen_mesh()
     xs = [p[0] for t in tris for p in t]; ys = [p[1] for t in tris for p in t]
     w, h = max(xs) - min(xs), max(ys) - min(ys)
     inner = px - 2 * margin; scale = inner / max(w, h)
@@ -187,8 +209,7 @@ def ascii_grid(grid, px=16):
     return "\n".join("".join("#" if (r, q) in grid else "." for q in range(px)) for r in range(px))
 
 if __name__ == "__main__":
-    full, n = svg(CHOSEN["count_gb"], CHOSEN["count_ni"], CHOSEN["seed"], "low-poly UK", CHOSEN["min_d"], stretch=CHOSEN["stretch"])
-    (OUT.parent / "i8-lowpoly.svg").write_text(full)
+    (OUT.parent / "i8-lowpoly.svg").write_text(chosen_svg())
     g = pixel_icon()
     # Hand touch-up: the Cornwall spike samples to one loose pixel, so extend it diagonally in the spike's colour.
     tip = g[(14, 5)]
