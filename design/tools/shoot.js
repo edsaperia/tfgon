@@ -15,7 +15,7 @@ const path = require("path");
   const fonts = await p.evaluate(() => [...document.fonts].filter((f) => f.status === "loaded").map((f) => `${f.family} ${f.weight}`));
   console.log("fonts loaded:", fonts.join(", "));
   const dir = path.resolve(__dirname, "../screenshots");
-  for (const id of ["marks2", "marks", "colours", "type"]) {
+  for (const id of ["marks2", "marks", "colours-neon", "colours", "type"]) {
     await p.locator("#" + id).screenshot({ path: `${dir}/${id}.png` });
   }
   console.log("requests outside the page's own files:", outside.length ? outside : "none");

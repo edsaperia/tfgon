@@ -120,8 +120,42 @@ th { background: var(--wash); }
 <div class="concepts" id="concepts"></div>
 </section>
 
+<section id="colours-neon">
+<h2>2. The colours, round 3: neon across the site (Ed's choice)</h2>
+<p class="lede">Ed chose (2026-11-28) to use the mark's neon colours as the site's palette, replacing the retuned set below. Ink and the link blue stay. The neon colours sing on dark and are for shapes only on white: none is safe for text on a white page.</p>
+<div class="swatches">
+  <div class="sw"><div class="chip" style="background:#FF2E88"></div><div class="meta"><b>Pink #FF2E88</b>Shapes and highlights. Large text only on dark.<div class="old">retuned was #D33A63</div></div></div>
+  <div class="sw"><div class="chip" style="background:#FFE41F"></div><div class="meta"><b>Yellow #FFE41F</b>Shapes only on white. Fine as text on dark.<div class="old">retuned was #FFC845</div></div></div>
+  <div class="sw"><div class="chip" style="background:#22F2A0"></div><div class="meta"><b>Green #22F2A0</b>Shapes only on white. Fine as text on dark.<div class="old">retuned was #34CFA0</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1EBEFF"></div><div class="meta"><b>Blue #1EBEFF</b>On white, only with an ink outline. Fine as text on dark.<div class="old">retuned was #2B7FC2</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1E2A36"></div><div class="meta"><b>Ink #1E2A36</b>All words on white, pin outlines, dark backgrounds.<div class="old">unchanged</div></div></div>
+  <div class="sw"><div class="chip" style="background:#1D5E99"></div><div class="meta"><b>Link #1D5E99</b>Links on white, always underlined.<div class="old">unchanged</div></div></div>
+</div>
+<div class="two">
+<div>
+<h3 style="margin-top:24px">Contrast (WCAG 2.2)</h3>
+<table>
+  <tr><th>Colour</th><th>On white</th><th>On ink (dark)</th></tr>
+  <tr><td><span class="dot" style="background:#FF2E88"></span>Pink</td><td class="large">3.50 — large text / shapes only</td><td class="large">4.17 — large text / shapes only</td></tr>
+  <tr><td><span class="dot" style="background:#FFE41F"></span>Yellow</td><td class="fail">1.28 — fails</td><td class="pass">11.37 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#22F2A0"></span>Green</td><td class="fail">1.47 — fails</td><td class="pass">9.92 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#1EBEFF"></span>Blue</td><td class="fail">2.13 — fails, even for shapes</td><td class="pass">6.85 — AA text</td></tr>
+  <tr><td><span class="dot" style="background:#1E2A36"></span>Ink</td><td class="pass">14.59 — AA text</td><td>—</td></tr>
+  <tr><td><span class="dot" style="background:#1D5E99"></span>Link</td><td class="pass">6.75 — AA text</td><td class="fail">2.16 — fails; links on dark need another colour</td></tr>
+</table>
+<p class="note">Compared with the retuned set: pink no longer passes for normal text on white (3.50, was 4.61), and blue no longer passes even for shapes (2.13, was 4.27). So on white every bright needs an ink outline as a pin or icon, and all words stay ink. On dark, yellow, green and blue pass for normal text, and pink for large text.</p>
+</div>
+<div>
+<h3 style="margin-top:24px">As map pins, checked for colour blindness</h3>
+<p class="note">Same method as below (Machado 2009, CIEDE2000 between the closest pair).</p>
+<div class="pins" id="pins-neon"></div>
+<p class="note">All four stay distinguishable: the closest pair is green/blue at 11.0 for blue-blindness, and 14.0 and 16.4 for the red–green types. That is a little closer than the retuned set for tritanopia (20.1).</p>
+</div>
+</div>
+</section>
+
 <section id="colours">
-<h2>2. The colours: the old four, retuned</h2>
+<h2>2a. The colours, round 1: the old four, retuned (replaced by neon)</h2>
 <p class="lede">The same family of pink, yellow, green and blue. Pink is deepened and moved slightly towards raspberry, so it passes the text-contrast standard on white. Yellow is warmed to a golden tone so it holds its own on white. Green is softened from the old neon mint, and lifted, so pink and green stay apart for people with red–green colour blindness. Blue is a little lighter and less teal, so it sits with the others rather than looking darker than them. A near-black slate ink replaces the old grey for words, and a deep blue is the link colour.</p>
 <div class="swatches">
   <div class="sw"><div class="chip" style="background:#D33A63"></div><div class="meta"><b>Pink #D33A63</b>Shapes: mark, pins, highlights. Also safe for large text on white.<div class="old">was #EF476F</div></div></div>
@@ -304,6 +338,17 @@ const pinsEl = document.getElementById("pins");
 for (const [name, s] of Object.entries(sims)) {
   const xy = [[8, 6], [52, 10], [18, 48], [64, 52]];
   pinsEl.appendChild(el(`<div class="pinbox"><svg viewBox="0 0 110 100" role="img" aria-label="${name}">${s.pins.map((p, i) => pinPath(xy[i][0], xy[i][1], p)).join("")}</svg><p><b>${name}</b><br>closest pair: ${s.closest}</p></div>`));
+}
+const simsNeon = {
+  "Typical vision": { pins: ["#FF2E88", "#FFE41F", "#22F2A0", "#1EBEFF"], closest: "yellow/green 33.7" },
+  "Protanopia (red-blind)": { pins: ["#656F8A", "#FBDD00", "#EFDF9B", "#9DBCFF"], closest: "yellow/green 14.0" },
+  "Deuteranopia (green-blind)": { pins: ["#9C9783", "#FFE734", "#D8CEA5", "#81A9FE"], closest: "pink/green 16.4" },
+  "Tritanopia (blue-blind)": { pins: ["#FF0058", "#FFD2C3", "#00F1DD", "#00CFD4"], closest: "green/blue 11.0" },
+};
+const pinsNeonEl = document.getElementById("pins-neon");
+for (const [name, s] of Object.entries(simsNeon)) {
+  const xy = [[8, 6], [52, 10], [18, 48], [64, 52]];
+  pinsNeonEl.appendChild(el(`<div class="pinbox"><svg viewBox="0 0 110 100" role="img" aria-label="${name}">${s.pins.map((p, i) => pinPath(xy[i][0], xy[i][1], p)).join("")}</svg><p><b>${name}</b><br>closest pair: ${s.closest}</p></div>`));
 }
 </script>
 </body>

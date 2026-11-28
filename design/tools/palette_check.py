@@ -11,6 +11,9 @@ PALETTES = {
     "old": {"pink": "#EF476F", "yellow": "#FFD166", "green": "#06D6A0", "blue": "#118AB2", "ink": "#393E46"},
     "new": {"pink": "#D33A63", "yellow": "#FFC845", "green": "#34CFA0", "blue": "#2B7FC2",
             "ink": "#1E2A36", "link": "#1D5E99"},
+    # Ed, 2026-11-28 (19b): the mark's neon colours become the site's palette.
+    "neon": {"pink": "#FF2E88", "yellow": "#FFE41F", "green": "#22F2A0", "blue": "#1EBEFF",
+             "ink": "#1E2A36", "link": "#1D5E99"},
 }
 MACHADO = {
     "protan": [[0.152286, 1.052583, -0.204868], [0.114503, 0.786281, 0.099216], [-0.003882, -0.048116, 1.051998]],
