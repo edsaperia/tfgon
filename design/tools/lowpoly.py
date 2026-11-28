@@ -128,8 +128,10 @@ def colour(tris, seed):
         col[i] = min(opts, key=lambda p: counts[p]); counts[col[i]] += 1
     return col
 
-def svg(count_gb, count_ni, seed, label, min_d):
+def svg(count_gb, count_ni, seed, label, min_d, stretch=1.0):
+    """stretch > 1 widens the shape (Ed, 2026-11-28: stretch it horizontally to fill the square)."""
     tris = mesh(GB, count_gb, seed, min_d) + mesh(NI, count_ni, seed + 1, min_d * 0.8)
+    tris = [tuple((x * stretch, y) for x, y in t) for t in tris]
     col = colour(tris, seed)
     S, pad = 10.0, 0.6
     xs = [p[0] for t in tris for p in t]; ys = [p[1] for t in tris for p in t]
@@ -148,3 +150,7 @@ if __name__ == "__main__":
         txt, n = svg(n_gb, n_ni, seed, f"low-poly UK, {name}", d)
         (OUT / f"lp-{name}.svg").write_text(txt)
         print(f"lp-{name}: {n} facets")
+    for st in (1.25, 1.4):
+        for name, seed in (("coarse", 3), ("coarse-b", 11)):
+            txt, n = svg(4, 0, seed, f"low-poly UK, {name}, stretched x{st}", 1.4, stretch=st)
+            (OUT / f"lp-{name}-x{str(st).replace('.', '')}.svg").write_text(txt)
