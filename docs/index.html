@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech for Good Organisers Network</title>
+  <meta name="description" content="The Tech for Good Organisers Network brings together people running tech-for-good communities across the UK.">
+  <link rel="icon" type="image/svg+xml" href="img/mark-small.svg">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/icon-16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/icon-32.png">
+  <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="img/apple-touch-icon.png">
+  <link rel="preload" href="fonts/outfit-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="fonts/outfit-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/config.js" defer></script>
+  <script src="js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to the content</a>
+
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="#intro">
+        <img class="brand-mark" src="img/mark.svg" alt="" width="48" height="48">
+        <span class="brand-name"><span class="brand-line-1">Tech for Good</span> <span class="brand-line-2">Organisers Network</span></span>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <ul>
+          <li><a href="#intro">About</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#join">Join</a></li>
+          <li><a href="#directory">Directory</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="wrap">
+
+    <section class="fold" id="intro" aria-labelledby="intro-heading">
+      <h2 class="fold-heading" id="intro-heading"><button type="button" class="fold-toggle" aria-expanded="true" aria-controls="intro-body">About the network</button></h2>
+      <div class="fold-body" id="intro-body">
+        <figure class="purpose">
+          <blockquote>
+            <p>Tech for Good Organisers Network UK brings together people running tech for good communities to share knowledge, strengthen existing networks, and support new ones so the movement can have real, lasting impact.</p>
+          </blockquote>
+          <figcaption>Our statement of purpose, agreed by everyone at the network’s 2026 retreat in Newcastle.</figcaption>
+        </figure>
+
+        <figure class="photo photo-wide">
+          <img src="img/members-tyne-bridge.jpg" width="1200" height="900" alt="About ten network members smiling together on the quayside under the Tyne Bridge in Newcastle.">
+        </figure>
+
+        <p class="definition">By <strong>tech for good</strong> we mean the intentional use of technology to drive positive outcomes for people and planet.</p>
+
+        <h3>The network at a glance</h3>
+        <ul class="glance">
+          <li id="glance-communities"><span class="glance-label">Communities</span> <span class="glance-text">See the <a href="#directory">directory</a>.</span></li>
+          <li><span class="glance-label">Meetings</span> <span class="glance-text">Three online quarterly meetings and one in-person retreat each year.</span></li>
+          <li><span class="glance-label">How it’s run</span> <span class="glance-text">By its members, with no central staff.</span></li>
+        </ul>
+
+        <ul class="audiences">
+          <li><strong>Do you run a tech-for-good community?</strong> <a href="#join">Find out how to join</a>.</li>
+          <li><strong>Are you a funder or partner?</strong> Contact <span class="placeholder">[FUNDERS CONTACT — Ed to supply]</span>.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="fold" id="events" aria-labelledby="events-heading">
+      <h2 class="fold-heading" id="events-heading"><button type="button" class="fold-toggle" aria-expanded="true" aria-controls="events-body">TFGON events</button></h2>
+      <div class="fold-body with-photo" id="events-body">
+        <figure class="photo">
+          <img src="img/members-dinner.jpg" width="800" height="588" loading="lazy" alt="About ten network members round a long dinner table, raising their drinks and smiling at the camera.">
+        </figure>
+        <div>
+          <p>The network’s own meetings, for its members.</p>
+          <h3>Upcoming</h3>
+          <ul class="event-list" id="events-upcoming"><li class="loading">Loading events…</li></ul>
+          <h3>Past</h3>
+          <ul class="event-list event-list-past" id="events-past"></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="fold" id="join" aria-labelledby="join-heading">
+      <h2 class="fold-heading" id="join-heading"><button type="button" class="fold-toggle" aria-expanded="true" aria-controls="join-body">Join the network</button></h2>
+      <div class="fold-body" id="join-body">
+        <div class="with-photo">
+          <figure class="photo">
+            <img src="img/members-table.jpg" width="640" height="738" loading="lazy" alt="A group of network members around a long table in a bar, smiling at the camera.">
+          </figure>
+          <div>
+            <p>The network is for people who run tech-for-good communities in the UK. Joining is mostly by invitation, but if you run a community and would like to be part of it, you can apply.</p>
+            <ol class="steps">
+              <li>You fill in the short form below.</li>
+              <li>The network looks at the tech-for-good events you have organised.</li>
+              <li>We pass your application to the organiser nearest to you.</li>
+              <li>We discuss it at the next quarterly meeting.</li>
+            </ol>
+          </div>
+        </div>
+
+        <form class="apply" id="apply-form" novalidate>
+          <h3 id="apply-heading">Apply to join</h3>
+          <div class="field">
+            <label for="apply-name">Your name</label>
+            <input id="apply-name" name="name" type="text" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="apply-email">Email address</label>
+            <span class="hint" id="apply-email-hint">We’ll use this to reply to you.</span>
+            <input id="apply-email" name="email" type="email" autocomplete="email" aria-describedby="apply-email-hint" required>
+          </div>
+          <fieldset class="field">
+            <legend>Links to tech-for-good events you’ve organised</legend>
+            <span class="hint" id="apply-links-hint">At least one: an event page, a meetup group, a write-up.</span>
+            <ul class="link-inputs" id="apply-links">
+              <li><label class="visually-hidden" for="apply-link-1">Event link 1</label><input id="apply-link-1" name="eventLinks" type="url" inputmode="url" placeholder="https://" aria-describedby="apply-links-hint" required></li>
+            </ul>
+            <button type="button" class="button-secondary" id="apply-add-link">Add another link</button>
+          </fieldset>
+          <div class="trap" aria-hidden="true">
+            <label for="apply-website">Leave this empty</label>
+            <input id="apply-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+          <button type="submit" class="button-primary">Send application</button>
+          <div class="form-status" id="apply-status" role="status" aria-live="polite" tabindex="-1"></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="fold" id="directory" aria-labelledby="directory-heading">
+      <h2 class="fold-heading" id="directory-heading"><button type="button" class="fold-toggle" aria-expanded="true" aria-controls="directory-body">Directory</button></h2>
+      <div class="fold-body" id="directory-body">
+        <p>The communities in the network and where they are. Choose a circle or a name to see who runs it.</p>
+        <div class="directory-layout">
+          <div class="map" id="map">
+            <!-- map:start -->
+        <svg class="map-drawing" viewBox="0.6 0.3 8.9 9.4" role="img" aria-labelledby="map-title">
+          <title id="map-title">The network's mark, a low-poly map of the UK, with a circle for each community</title>
+          <polygon points="4.885,0.600 3.969,2.158 3.510,1.242" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.885,0.600 5.802,1.975 6.375,0.783" fill="#1EBEFF" stroke="#1EBEFF" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="5.802,1.975 4.198,3.625 5.802,3.717" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="5.802,1.975 5.802,3.717 6.719,2.800" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.885,0.600 3.969,2.158 5.802,1.975" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="6.604,4.633 4.885,4.725 5.802,3.717" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="7.521,5.825 8.781,6.742 8.208,7.658" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="7.521,5.825 5.115,5.642 6.032,6.717" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="8.208,7.658 9.010,8.208 6.604,8.575" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.312,8.758 5.229,7.842 6.604,8.575" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.312,8.758 2.594,9.400 3.969,8.025" fill="#1EBEFF" stroke="#1EBEFF" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="6.604,8.575 6.032,6.717 5.229,7.842" fill="#1EBEFF" stroke="#1EBEFF" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.312,8.758 5.229,7.842 3.969,8.025" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="5.229,7.842 6.032,6.717 4.427,6.467" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="5.229,7.842 4.427,6.467 3.625,7.292" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.427,6.467 5.115,5.642 6.032,6.717" fill="#1EBEFF" stroke="#1EBEFF" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="6.604,8.575 6.032,6.717 8.208,7.658" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.427,6.467 5.115,5.642 3.854,5.825" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="7.521,5.825 5.115,5.642 6.604,4.633" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="5.115,5.642 6.604,4.633 4.885,4.725" fill="#1EBEFF" stroke="#1EBEFF" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.885,4.725 3.969,4.358 4.198,3.625" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="5.802,1.975 4.198,3.625 3.969,2.158" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.198,3.625 3.281,3.075 3.969,2.158" fill="#1EBEFF" stroke="#1EBEFF" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="4.198,3.625 5.802,3.717 4.885,4.725" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="6.032,6.717 7.521,5.825 8.208,7.658" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="1.104,3.992 2.021,5.275 2.938,4.725" fill="#FFE41F" stroke="#FFE41F" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="1.104,3.992 2.938,4.725 2.594,3.717" fill="#FF2E88" stroke="#FF2E88" stroke-width="0.02" stroke-linejoin="round"/>
+          <polygon points="1.104,3.992 2.021,5.275 0.990,4.817" fill="#22F2A0" stroke="#22F2A0" stroke-width="0.02" stroke-linejoin="round"/>
+        </svg>
+        <!-- map:end -->
+            <div class="map-pins" id="map-pins"></div>
+            <div class="map-online" id="map-online">
+              <p class="map-online-label">Online and UK-wide</p>
+              <div class="map-online-pins" id="map-online-pins"></div>
+            </div>
+          </div>
+          <div class="directory-list">
+            <ul class="community-list" id="community-list"><li class="loading">Loading the directory…</li></ul>
+            <p class="legend"><span class="legend-pin" aria-hidden="true"></span> Member community <span class="legend-pin legend-pin-emerging" aria-hidden="true"></span> Emerging group</p>
+          </div>
+          <svg class="leader-lines" id="leader-lines" aria-hidden="true" focusable="false"></svg>
+        </div>
+
+        <section class="past" aria-labelledby="past-heading">
+          <h3 class="fold-heading" id="past-heading"><button type="button" class="fold-toggle" aria-expanded="true" aria-controls="past-body">Communities that helped build the network</button></h3>
+          <div class="fold-body" id="past-body">
+            <figure class="photo photo-past">
+              <img src="img/members-street.jpg" width="1200" height="550" loading="lazy" alt="Members of the Tech for Good Organisers Network smiling and pulling faces for the camera on a street at night, in 2022.">
+            </figure>
+            <p>These communities were among the network’s founding members. They are no longer active in it, and they are not on the map.</p>
+            <ul class="past-list" id="past-list"></ul>
+          </div>
+        </section>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Tech for Good Organisers Network UK</p>
+    </div>
+  </footer>
+</body>
+</html>

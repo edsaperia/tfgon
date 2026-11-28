@@ -1,0 +1,220 @@
+{
+  "_about": "The directory: one entry per community. 'status' is 'member', 'emerging' or 'past'. Members and emerging groups get a circle on the map; past communities are listed at the foot of the directory and get no circle, so moving one back is a one-word change to 'status'. 'pin' is where its circle goes on the directory map, which is the network's mark drawn large: 'x' and 'y' are in the mark's own grid (0 to 10 across and down, as in docs/img/mark.svg), placed by eye on the stylised shape. Use 'online': true instead for a community that meets online or across the UK. An organiser's 'email' and 'photo' stay empty unless that organiser has agreed to publish them. Never put a phone number or a personal email address here: this file is public.",
+  "communities": [
+    {
+      "id": "tech-for-good-scotland",
+      "name": "Tech for Good Scotland",
+      "status": "member",
+      "region": "Scotland",
+      "runBy": "ThirdSectorLab",
+      "about": "Brings together people across Scotland who use technology for social good.",
+      "website": "https://thirdsectorlab.co.uk/techforgood/",
+      "events": "",
+      "pin": { "x": 4.45, "y": 3.75 },
+      "organisers": [
+        { "name": "Ross McCulloch", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "tech-for-good-cymru",
+      "name": "Tech for Good Cymru",
+      "status": "member",
+      "region": "Wales",
+      "runBy": "ProMo Cymru",
+      "about": "Brings together people across Wales who use technology for social good.",
+      "website": "https://www.promo.cymru",
+      "events": "",
+      "pin": { "x": 4.3, "y": 7.35 },
+      "organisers": [
+        { "name": "Arielle Tye", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "tech4good-south-west",
+      "name": "Tech4Good South West",
+      "status": "member",
+      "region": "South West England",
+      "runBy": "Tech4Good South West CIC",
+      "about": "Runs events and a community for people in the South West of England who use technology for good.",
+      "website": "https://www.tech4goodsouthwest.org",
+      "events": "https://luma.com/tech4goodsouthwest",
+      "pin": { "x": 5.05, "y": 7.65 },
+      "organisers": [
+        { "name": "Annie Legge", "email": "", "photo": "" },
+        { "name": "Ed Howarth", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "newspeak-house",
+      "name": "Newspeak House",
+      "status": "member",
+      "region": "London",
+      "runBy": "",
+      "about": "A college and community space in London for technologists working on civic and social questions.",
+      "website": "https://newspeak.house",
+      "events": "https://newspeak.house/events",
+      "pin": { "x": 7.3, "y": 7.85 },
+      "organisers": [
+        { "name": "Edward Saperia", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "techsoup-connect-england",
+      "name": "TechSoup Connect England",
+      "status": "member",
+      "region": "England (online)",
+      "runBy": "Superhighways",
+      "about": "Runs events, now online, that help charities and community groups make good use of technology.",
+      "website": "",
+      "events": "",
+      "pin": { "online": true },
+      "organisers": [
+        { "name": "Kate White", "email": "", "photo": "" },
+        { "name": "Siddharth Bannerjee", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "digital-leads-network",
+      "name": "Digital Leads Network",
+      "status": "member",
+      "region": "UK-wide (online)",
+      "runBy": "CAST",
+      "about": "An online network, across the UK, for people leading digital work in charities.",
+      "website": "",
+      "events": "",
+      "pin": { "online": true },
+      "organisers": [
+        { "name": "David Scurr", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "north-west-england",
+      "name": "North West England",
+      "status": "emerging",
+      "region": "North West England (Manchester)",
+      "runBy": "",
+      "about": "A new tech-for-good group starting in Manchester.",
+      "website": "",
+      "events": "",
+      "pin": { "x": 5.4, "y": 6.05 },
+      "organisers": []
+    },
+    {
+      "id": "north-east-england",
+      "name": "North East England",
+      "status": "emerging",
+      "region": "North East England (Newcastle)",
+      "runBy": "",
+      "about": "A new tech-for-good group starting in Newcastle.",
+      "website": "",
+      "events": "",
+      "pin": { "x": 6.0, "y": 4.95 },
+      "organisers": []
+    },
+    {
+      "id": "tech-for-good-london",
+      "name": "Tech for Good London / Global",
+      "status": "past",
+      "region": "London",
+      "years": "",
+      "runBy": "",
+      "about": "A meetup that brought coders and designers together with people who understood a social problem, to build digital answers to social and environmental challenges.",
+      "website": "",
+      "events": "",
+      "pin": { "x": 7.3, "y": 7.85 },
+      "organisers": [
+        { "name": "Dama Sathianathan", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "tech-for-good-live",
+      "name": "Tech for Good Live",
+      "status": "past",
+      "region": "Manchester",
+      "years": "",
+      "runBy": "",
+      "about": "Championed the ethical use of technology through events, volunteer matching, advice to councils and a podcast.",
+      "website": "",
+      "events": "",
+      "pin": { "x": 5.4, "y": 6.05 },
+      "organisers": [
+        { "name": "Rebecca Rae-Evans", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "tech-for-good-oxford",
+      "name": "Tech for Good Oxford",
+      "status": "past",
+      "region": "Oxford",
+      "years": "",
+      "runBy": "",
+      "about": "",
+      "website": "",
+      "events": "",
+      "pin": { "x": 6.5, "y": 7.4 },
+      "organisers": [
+        { "name": "Chris Ashworth", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "digital-for-good-scotland",
+      "name": "Digital for Good",
+      "status": "past",
+      "region": "Scotland",
+      "years": "",
+      "runBy": "",
+      "about": "Helped people working in digital in Scotland contribute to the biggest problems facing people and the planet.",
+      "website": "",
+      "events": "",
+      "pin": { "x": 5.2, "y": 3.7 },
+      "organisers": [
+        { "name": "Barry O'Kane", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "tech-for-good-exeter",
+      "name": "Tech for Good Exeter",
+      "status": "past",
+      "region": "Exeter",
+      "years": "",
+      "runBy": "",
+      "about": "",
+      "website": "",
+      "events": "",
+      "pin": { "x": 4.1, "y": 8.45 },
+      "organisers": [
+        { "name": "Micheal McAndrew", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "social-tech-north-east",
+      "name": "Social Tech North East",
+      "status": "past",
+      "region": "North East England",
+      "years": "",
+      "runBy": "",
+      "about": "",
+      "website": "",
+      "events": "",
+      "pin": { "x": 6.0, "y": 4.95 },
+      "organisers": [
+        { "name": "David Van der Velde", "email": "", "photo": "" }
+      ]
+    },
+    {
+      "id": "netsquared-midlands",
+      "name": "NetSquared Midlands",
+      "status": "past",
+      "region": "Midlands",
+      "years": "",
+      "runBy": "",
+      "about": "",
+      "website": "",
+      "events": "",
+      "pin": { "x": 5.9, "y": 6.8 },
+      "organisers": [
+        { "name": "Pauline Roche", "email": "", "photo": "" }
+      ]
+    }
+  ]
+}
