@@ -18,7 +18,7 @@ if __name__ == "__main__":
         if key in seen: continue
         seen.add(key); found.append(seed)
     for i, sd in enumerate(found, 1):
-        full, _ = svg(g, 1, 8, 0.14, 1, sd, f"I7 colour shuffle {i} (seed {sd})", colours=NEON)
+        full, _ = svg(g, 1, 8, 0, 1, sd, f"I7 colour shuffle {i} (seed {sd})", colours=NEON)
         small, _ = svg(g, 2, 16, 0, 1, sd, f"I7 colour shuffle {i} (seed {sd}), small", colours=NEON)
         (OUT / f"i7-shuffle-{i:02d}.svg").write_text(full)
         (OUT / f"i7-shuffle-{i:02d}-small.svg").write_text(small)

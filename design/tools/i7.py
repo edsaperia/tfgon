@@ -20,7 +20,7 @@ SHAPE = """
 
 if __name__ == "__main__":
     g = parse(SHAPE)
-    full, n = svg(g, 1, 8, 0.14, 1, 5, "minimal pixel UK, neon, on a dark tile", colours=NEON)
+    full, n = svg(g, 1, 8, 0, 1, 5, "minimal pixel UK, neon, on a dark tile", colours=NEON)
     small, _ = svg(g, 2, 16, 0, 1, 5, "minimal pixel UK, neon, on a dark tile, small", colours=NEON)
     (OUT / "i7-pixel-minimal.svg").write_text(full)
     (OUT / "i7-pixel-minimal-small.svg").write_text(small)
