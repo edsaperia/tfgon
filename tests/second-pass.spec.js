@@ -20,7 +20,8 @@ const EMERGING = {
   'north-east-england': 'North East England',
 };
 const PAST = ['Tech for Good London / Global', 'Tech for Good Live', 'Tech for Good Oxford', 'Digital for Good', 'Tech for Good Exeter', 'Social Tech North East', 'NetSquared Midlands'];
-const PHOTOS = ['img/members-street.jpg', 'img/members-table.jpg', 'img/member-flipchart.jpg'];
+// Exactly these four (Ed, 2026-11-28); the old site's flipchart photo is not used.
+const PHOTOS = ['img/members-tyne-bridge.jpg', 'img/members-dinner.jpg', 'img/members-table.jpg', 'img/members-street.jpg'];
 
 async function openEverything(page) {
   const closed = await page.locator('.fold-toggle[aria-expanded="false"]').evaluateAll((ts) => ts.map((t) => t.getAttribute('aria-controls')));
@@ -133,7 +134,7 @@ test('on desktop each circle has a line to its entry, and on a phone none does',
   await expect(page.locator('.leader-lines')).toBeHidden();
 });
 
-test('each member photo loads from the page itself, with alt text and a fixed size', async ({ page, baseURL }) => {
+test('each of the four member photos loads from the page itself, with alt text and a fixed size', async ({ page, baseURL }) => {
   await openPage(page);
   await openEverything(page);
   const imgs = page.locator('main img');

@@ -167,7 +167,8 @@ main { padding-top: 1.5rem; padding-bottom: 3rem; }
 .photo { margin: 0; }
 .photo img { display: block; width: 100%; height: auto; border-radius: var(--radius); background: var(--raised); }
 .photo-wide { margin: 0 0 1.5rem; }
-.photo-wide img { aspect-ratio: 8 / 3; object-fit: cover; object-position: 50% 60%; }
+.photo-wide img { aspect-ratio: 2 / 1; object-fit: cover; object-position: 50% 72%; }
+.photo-past { max-width: 40rem; margin: 0 0 1rem; }
 
 /* A section whose words sit beside a photo on desktop, above it on a phone. */
 .with-photo { display: grid; gap: 1.5rem; grid-template-columns: 1fr; align-items: start; }
