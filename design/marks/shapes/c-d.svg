@@ -1,18 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 9 9" shape-rendering="crispEdges" role="img" aria-label="TFGON mark: combination d: longer attached tail">
   <rect width="9" height="9" rx="1.08" fill="#1E2A36"/>
-  <rect x="3.57" y="1.07" width="0.86" height="0.86" fill="#FF2E88"/>
-  <rect x="4.57" y="1.07" width="0.86" height="0.86" fill="#22F2A0"/>
-  <rect x="3.57" y="2.07" width="0.86" height="0.86" fill="#FFE41F"/>
-  <rect x="4.57" y="2.07" width="0.86" height="0.86" fill="#1EBEFF"/>
-  <rect x="4.57" y="3.07" width="0.86" height="0.86" fill="#22F2A0"/>
+  <rect x="4.57" y="1.07" width="0.86" height="0.86" fill="#FF2E88"/>
+  <rect x="3.57" y="2.07" width="0.86" height="0.86" fill="#22F2A0"/>
+  <rect x="4.57" y="2.07" width="0.86" height="0.86" fill="#FFE41F"/>
+  <rect x="4.57" y="3.07" width="0.86" height="0.86" fill="#1EBEFF"/>
   <rect x="1.57" y="4.07" width="0.86" height="0.86" fill="#FFE41F"/>
   <rect x="4.57" y="4.07" width="0.86" height="0.86" fill="#FF2E88"/>
-  <rect x="5.57" y="4.07" width="0.86" height="0.86" fill="#1EBEFF"/>
+  <rect x="5.57" y="4.07" width="0.86" height="0.86" fill="#22F2A0"/>
   <rect x="4.57" y="5.07" width="0.86" height="0.86" fill="#FFE41F"/>
-  <rect x="5.57" y="5.07" width="0.86" height="0.86" fill="#22F2A0"/>
+  <rect x="5.57" y="5.07" width="0.86" height="0.86" fill="#1EBEFF"/>
   <rect x="6.57" y="5.07" width="0.86" height="0.86" fill="#FFE41F"/>
   <rect x="3.57" y="6.07" width="0.86" height="0.86" fill="#22F2A0"/>
-  <rect x="4.57" y="6.07" width="0.86" height="0.86" fill="#1EBEFF"/>
+  <rect x="4.57" y="6.07" width="0.86" height="0.86" fill="#FF2E88"/>
   <rect x="2.57" y="7.07" width="0.86" height="0.86" fill="#FFE41F"/>
-  <rect x="3.57" y="7.07" width="0.86" height="0.86" fill="#FF2E88"/>
+  <rect x="3.57" y="7.07" width="0.86" height="0.86" fill="#1EBEFF"/>
 </svg>
